@@ -1,0 +1,370 @@
+.app-checkboxset.with-horizontal-row .app-checkbox,
+.app-checkboxset.with-vertical-row .app-checkbox {
+    padding: 10px;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label,
+.app-checkboxset.with-vertical-row .app-checkboxset-label {
+    z-index: 0;
+    position: relative;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: visible;
+}
+
+.wm-app .form-group .app-checkboxset.with-horizontal-row .checkbox+.checkbox {
+    margin-top: 0px;
+}
+
+
+/* Input*/
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    z-index: -1;
+    position: absolute;
+    left: -10px;
+    top: -8px;
+    display: block;
+    margin: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: none;
+    outline: none;
+    opacity: 0;
+    transform: scale(1);
+    overflow: visible;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+
+/* Caption */
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>.caption,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>.caption {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    padding-left: 32px;
+}
+
+
+/* Box */
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>.caption::before {
+    content: "";
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 3px 14px 3px 1px;
+    border: solid 2px;
+    border-color: rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
+    width: 18px;
+    height: 18px;
+    vertical-align: top;
+    transition: border-color 0.2s, background-color 0.2s;
+    position: absolute;
+    left: 0;
+}
+
+
+/* Checkmark */
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>.caption::after,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>.caption::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    width: 10px;
+    height: 5px;
+    border: solid 2px transparent;
+    border-right: none;
+    border-top: none;
+    transform: translate(3px, 4px) rotate(-45deg);
+}
+
+
+/* #### intermediate-checkbox #### */
+
+.app-checkboxset.with-horizontal-row.intermediate-checkbox .app-checkboxset-label>.caption::after,
+.app-checkboxset.with-vertical-row.intermediate-checkbox .app-checkboxset-label>.caption::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 1px;
+    width: 10px;
+    height: 0px;
+    border: solid 1px transparent;
+    transform: translate(3px, 4px) rotate(0deg);
+}
+
+
+/* Checked, Indeterminate */
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:checked,
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:indeterminate,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:checked,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:indeterminate {
+    background-color: #6750A4;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:checked+.caption::before,
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:indeterminate+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:checked+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:indeterminate+.caption::before {
+    border-color: #6750A4;
+    background-color: #6750A4;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:checked+.caption::after,
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:indeterminate+.caption::after,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:checked+.caption::after,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:indeterminate+.caption::after {
+    border-color: #FFFFFF;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:indeterminate+.caption::after,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:indeterminate+.caption::after {
+    border-left: none;
+    transform: translate(4px, 3px);
+}
+
+.app-checkboxset.with-horizontal-row .app-checkbox.checkbox label input[type="checkbox"]:focus,
+.app-checkboxset.with-vertical-row .app-checkbox.checkbox label input[type="checkbox"]:focus {
+    outline: unset !important;
+}
+
+
+/* Hover, Focus */
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label:hover>input,
+.app-checkboxset.with-vertical-row .app-checkboxset-label:hover>input {
+    opacity: 0.04;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:focus,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:focus {
+    opacity: 0.12;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label:hover>input[type="checkbox"]:hover,
+.app-checkboxset.with-vertical-row .app-checkboxset-label:hover>input[type="checkbox"]:hover {
+    opacity: 0.16;
+}
+
+
+/* Active */
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:active,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:active {
+    opacity: 1;
+    transform: scale(0);
+    transition: transform 0s, opacity 0s;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:hover+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:hover+.caption::before {
+    border-color: #6750A4;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:checked:hover+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:checked:hover+.caption::before {
+    border-color: transparent;
+    background-color: #6750A4;
+}
+
+
+/* Disabled */
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input:disabled,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input:disabled {
+    opacity: 0;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input:disabled+.caption,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input:disabled+.caption {
+    color: rgba(0, 0, 0, 0.38);
+    cursor: initial;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input:disabled+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input:disabled+.caption::before {
+    border-color: #1d1b204d;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input:checked:disabled+.caption::before,
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input:indeterminate:disabled+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input:checked:disabled+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input:indeterminate:disabled+.caption::before {
+    border-color: transparent;
+    background-color: #1d1b204d;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:is(:checked):disabled+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:is(:checked):disabled+.caption::before {
+    border-color: transparent;
+    background-color: #1d1b204d;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label>input[type="checkbox"]:hover:disabled+.caption::before,
+.app-checkboxset.with-vertical-row .app-checkboxset-label>input[type="checkbox"]:hover:disabled+.caption::before {
+    border-color: #1d1b204d;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkboxset-label.disabled:hover>input[type="checkbox"]:disabled:hover,
+.app-checkboxset.with-vertical-row .app-checkboxset-label.disabled:hover>input[type="checkbox"]:disabled:hover {
+    opacity: 0;
+}
+
+
+/* ########### show horizontal row styles ############ */
+
+.app-checkboxset.inline.list-group.app-checkboxset.with-horizontal-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.app-checkboxset.with-vertical-row.inline .checkbox+.checkbox {
+    margin-top: 0px;
+}
+
+.app-checkboxset.with-horizontal-row .app-checkbox.checkbox {
+    width: auto;
+    vertical-align: unset;
+    display: unset;
+    margin-top: unset;
+}
+
+
+/* ########### show vertical row styles ############ */
+
+.app-checkboxset.with-vertical-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-app .form-group .app-checkboxset.with-vertical-row.inline .checkbox+.checkbox {
+    margin-top: 0px;
+}
+
+
+/* ######## start placement styles ####### */
+
+.app-checkboxset.start-placement-check .app-checkboxset-label>input {
+    left: unset;
+    right: -9px;
+}
+
+.app-checkboxset.start-placement-check .app-checkboxset-label>.caption {
+    padding-left: unset;
+    padding-right: 32px;
+}
+
+.app-checkboxset.start-placement-check .app-checkboxset-label>.caption::before {
+    left: unset;
+    right: -12px
+}
+
+.app-checkboxset.start-placement-check .app-checkboxset-label>.caption::after {
+    left: unset;
+    right: 8px;
+}
+
+.app-checkboxset.with-vertical-row.app-checkboxset.start-placement-check .app-checkboxset-label {
+    width: auto;
+}
+
+
+/* ######## top placement styles ####### */
+
+.app-checkboxset.top-placement-check .app-checkboxset-label>input {
+    left: 50%;
+    transform: translateX(-48%);
+    top: 24px;
+}
+
+.app-checkboxset.top-placement-check .app-checkboxset-label>.caption {
+    padding-left: unset;
+    padding-bottom: 32px;
+}
+
+.app-checkboxset.top-placement-check .app-checkboxset-label>.caption::before {
+    left: 50%;
+    top: 32px;
+    transform: translateX(-50%);
+    margin: 3px 1px 3px 1px;
+}
+
+.app-checkboxset.top-placement-check .app-checkboxset-label>.caption::after {
+    left: 50%;
+    transform: translate(-5px, 4px) rotate(-45deg);
+    top: 35px;
+}
+
+.app-checkboxset.with-vertical-row.app-checkboxset.top-placement-check .app-checkboxset-label {
+    width: auto;
+}
+
+
+/* ######## bottom placement styles ####### */
+
+.app-checkboxset.bottom-placement-check .app-checkboxset-label>input {
+    left: 50%;
+    transform: translateX(-48%);
+}
+
+.app-checkboxset.bottom-placement-check .app-checkboxset-label>.caption {
+    padding-left: unset;
+    padding-top: 32px;
+}
+
+.app-checkboxset.bottom-placement-check .app-checkboxset-label>.caption::before {
+    left: 50%;
+    top: 0px;
+    transform: translateX(-50%);
+    margin: 3px 1px 3px 1px;
+}
+
+.app-checkboxset.bottom-placement-check .app-checkboxset-label>.caption::after {
+    left: 50%;
+    transform: translate(-5px, 4px) rotate(-45deg);
+}
+
+.app-checkboxset.with-vertical-row.app-checkboxset.bottom-placement-check .app-checkboxset-label {
+    width: auto;
+}
+
+
+/* ###### checkbox disabled styles ####### */
+
+.app-checkboxset.check-disabled .app-checkboxset-label>input[type="checkbox"]:disabled {
+    opacity: 0;
+}
+
+.app-checkboxset.check-disabled .app-checkboxset-label>input[type="checkbox"]:not(:checked):disabled.caption::before {
+    border-color: #1d1b204d;
+    background-color: #1d1b204d;
+}
+
+.app-checkboxset.check-disabled .app-checkboxset-label>input[type="checkbox"]:disabled {
+    background-color: #1d1b204d;
+}
+
+.app-checkboxset.check-disabled .app-checkboxset-label>input[type="checkbox"]:disabled+.caption::after {
+    border-color: #fff;
+}

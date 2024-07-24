@@ -1,0 +1,8 @@
+<wm-custom-widget-container>
+    <wm-composite name="composite1">
+        <wm-label class=" control-label" notag="true" name="label1" caption="bind:pageParams.labelText"></wm-label>
+        <wm-container name="container1">
+            <wm-checkboxset height="auto" name="checkboxset1" dataset="Option 1, Option 2" datafield="All Fields" on-change="checkboxset1Change($event, widget, newVal, oldVal)" disabled="bind:pageParams.showDisable" required="bind:pageParams.showRequired"></wm-checkboxset>
+        </wm-container>
+    </wm-composite>
+</wm-custom-widget-container>

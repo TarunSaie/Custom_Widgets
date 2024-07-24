@@ -1,0 +1,22 @@
+<wm-page pagetitle="Button Test" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-container name="container1" content="buttons">
+                <wm-param name="style" value="Outlined" type="string"></wm-param>
+                <wm-param name="state" value="enabled" type="string"></wm-param>
+                <wm-param name="showIcon" value="true" type="boolean"></wm-param>
+                <wm-param name="labelText" value="New Button" type="string"></wm-param>
+                <wm-param name="icon" value="wi wi-add" type="string"></wm-param>
+                <wm-param name="variant" value="secondary" type="string"></wm-param>
+            </wm-container>
+            <wm-custom-widget widgetname="buttonsCustom" on-clear="afterClear()">
+                <wm-prop name="style" value="Outlined" type="string"></wm-prop>
+                <wm-prop name="state" value="enabled" type="string"></wm-prop>
+                <wm-prop name="showIcon" value="true" type="boolean"></wm-prop>
+                <wm-prop name="labelText" value="New Button" type="string"></wm-prop>
+                <wm-prop name="icon" value="wi wi-add" type="string"></wm-prop>
+                <wm-prop name="variant" value="secondary" type="string"></wm-prop>
+            </wm-custom-widget>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

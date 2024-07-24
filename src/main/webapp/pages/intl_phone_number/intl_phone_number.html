@@ -1,0 +1,12 @@
+<wm-partial name="partial1">
+    <wm-linearlayout direction="row">
+        <wm-linearlayoutitem name="linearlayoutitem1">
+            <wm-popover popoverwidth="240" popoverheight="360" margin="unset 0.5em" name="popover1" iconclass="fa fa-globe" caption="bind:selectedCountry.dial_code || ''" contentsource="inline" on-show="popover1Show($event, widget)">
+                <wm-search name="search1" dataset="bind:Variables.CountryCodes.dataSet" searchkey="code,dial_code,name" displaylabel="bind:$[name] + ' ' + $[dial_code]" datafield="All Fields" type="autocomplete" on-select="search1Select($event, widget, selectedValue)"></wm-search>
+            </wm-popover>
+        </wm-linearlayoutitem>
+        <wm-linearlayoutitem flexgrow="1" name="linearlayoutitem2">
+            <wm-text name="text2" on-change="text2Change($event, widget, newVal, oldVal)"></wm-text>
+        </wm-linearlayoutitem>
+    </wm-linearlayout>
+</wm-partial>

@@ -1,0 +1,258 @@
+
+/**--Utility classes--**/
+.thin, .w-100{
+font-weight: 100;
+}
+.extralight, .w-200{
+font-weight: 200;
+}
+.light, .w-300{
+font-weight: 300;
+}
+.regular, .w-400{
+font-weight: 400;
+}
+.medium, .w-500{
+font-weight: 500;
+}
+.semibold, .w-600{
+font-weight: 600;
+}
+.bold, .w-700{
+font-weight: 700;
+}
+.extrabold, .w-800{
+font-weight: 800;
+}
+.black, .w-900{
+font-weight: 900;
+}
+.pointer{
+    cursor: pointer;
+    *:not([disabled]){
+        cursor: pointer;
+    }
+}
+.label-primary {
+    background: var(--wm-color-primary-30);
+    color: var(--wm-color-primary);
+}
+.label-success {
+    background: var(--wm-color-success-o);
+    color: var(--wm-color-success);
+}
+.label-info {
+    background: var(--wm-color-info-o);
+    color: var(--wm-color-info);
+}
+.label-warning {
+    background: var(--wm-color-warning-200);
+    color: var(--wm-color-warning);
+}
+.label-muted {
+    color: var(--wm-text-muted-color);
+    background-color: var(--wm-text-muted-color);
+}
+
+.label-danger {
+    background: var(--wm-color-danger2-o);
+    color: var(--wm-color-danger2);
+}
+.text-danger {
+    color: var(--wm-color-danger);
+}
+.text-success {
+    color: var(--wm-color-success);
+}
+.text-info {
+    color: var(--wm-color-info);
+}
+.text-primary {
+    color: var(--wm-color-primary);
+}
+.text-warning {
+    color: var(--wm-color-warning);
+}
+.text-muted {
+    color: var(--wm-text-muted-color);
+}
+.inline{
+    display: inline;
+    width: auto;
+}
+.flex{
+    display: flex;
+}
+.inline-flex{
+display: inline-flex;
+}
+.dir-column {
+flex-direction: column;
+}
+.dir-row {
+flex-direction: row;
+}
+.vert-center{
+align-items: center;
+}
+.horz-center{
+justify-content: center;
+}
+.flex-start{
+justify-content: flex-start;
+}
+.flex-end{
+justify-content: flex-end;
+}
+.space-between {
+justify-content: space-between;
+}
+.space-around {
+justify-content: space-around;
+}
+.space-evenly {
+justify-content: space-evenly;
+}
+
+
+//space classes
+.p-0{
+    padding: 0 !important;
+}
+.space-0{
+padding: var(--wm-space-0);
+}
+.space-1{
+padding: var(--wm-space-1);
+}
+.space-2{
+padding: var(--wm-space-2);
+}
+.space-3{
+padding: var(--wm-space-3);
+}
+.space-4{
+padding: var(--wm-space-4);
+}
+.space-5{
+padding: var(--wm-space-5);
+}
+.space-6{
+padding: var(--wm-space-6);
+}
+.space-7{
+padding: var(--wm-space-7);
+}
+.space-8{
+padding: var(--wm-space-8);
+}
+.space-9{
+padding: var(--wm-space-9);
+}
+.space-10{
+padding: var(--wm-space-10);
+}
+.space-11{
+padding: var(--wm-space-11);
+}
+.space-12{
+padding: var(--wm-space-12);
+}
+.space-vert-2{
+    padding-top: var(--wm-space-2) !important;
+    padding-bottom: var(--wm-space-2) !important;
+}
+
+//radius classes
+.radius-0{
+border-radius: var(--wm-space-0);
+}
+.radius-1{
+border-radius: var(--wm-space-1);
+}
+.radius-2{
+border-radius: var(--wm-space-2);
+}
+.radius-3{
+border-radius: var(--wm-space-3);
+}
+.radius-4{
+border-radius: var(--wm-space-4);
+}
+.radius-5{
+border-radius: var(--wm-space-5);
+}
+.radius-6{
+border-radius: var(--wm-space-6);
+}
+.radius-7{
+border-radius: var(--wm-space-7);
+}
+.radius-8{
+border-radius: var(--wm-space-8);
+}
+.radius-9{
+border-radius: var(--wm-space-9);
+}
+.radius-10{
+border-radius: var(--wm-space-10);
+}
+.radius-11{
+border-radius: var(--wm-space-11);
+}
+.radius-12{
+border-radius: var(--wm-space-12);
+}
+
+//text decoration none
+.decoration-none{
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+//images
+.img-on{
+    &-dark{
+        filter: invert(100%) grayscale(100%) brightness(10);
+    }
+}
+
+
+// columns 
+.generate-columns(@n, @columns) when (@n =< @columns) {
+    .col-@{n} {
+        width: (@n / @columns * 100%);
+    }
+    .generate-columns((@n + 1), @columns);
+}
+.generate-columns(1, 12); // This will generate .col-1 to .col-12
+// Define your breakpoints
+@breakpoint-sm: 576px;
+@breakpoint-md: 768px;
+@breakpoint-lg: 992px;
+@breakpoint-xl: 1200px;
+
+// Mixin to generate columns for a given breakpoint
+.generate-responsive-columns(@n, @columns, @breakpoint) when (@n =< @columns) {
+  .col-@{breakpoint}-@{n} {
+    width: (@n / @columns * 100%);
+  }
+  .generate-responsive-columns((@n + 1), @columns, @breakpoint);
+}
+// Media queries
+@media (min-width: @breakpoint-sm) {
+  .generate-responsive-columns(1, 12, sm);
+}
+@media (min-width: @breakpoint-md) {
+  .generate-responsive-columns(1, 12, md);
+}
+@media (min-width: @breakpoint-lg) {
+  .generate-responsive-columns(1, 12, lg);
+}
+@media (min-width: @breakpoint-xl) {
+  .generate-responsive-columns(1, 12, xl);
+}
+
+  

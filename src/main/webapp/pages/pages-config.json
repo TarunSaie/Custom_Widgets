@@ -1,0 +1,276 @@
+[ {
+  "name" : "ButtonTest",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Common",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "Login",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Main",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "buttons",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "style",
+    "type" : "string"
+  }, {
+    "name" : "state",
+    "type" : "string"
+  }, {
+    "name" : "showIcon",
+    "type" : "boolean"
+  }, {
+    "name" : "labelText",
+    "type" : "string"
+  }, {
+    "name" : "icon",
+    "type" : "string"
+  }, {
+    "name" : "variant",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "buttonsCustom",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "style",
+    "type" : "string"
+  }, {
+    "name" : "state",
+    "type" : "string"
+  }, {
+    "name" : "showIcon",
+    "type" : "boolean"
+  }, {
+    "name" : "labelText",
+    "type" : "string"
+  }, {
+    "name" : "icon",
+    "type" : "string"
+  }, {
+    "name" : "variant",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "checkMark",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "checkboxSet",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "showIntermediate",
+    "type" : "boolean"
+  }, {
+    "name" : "showDisable",
+    "type" : "boolean"
+  }, {
+    "name" : "showRequired",
+    "type" : "boolean"
+  }, {
+    "name" : "topPlacement",
+    "type" : "boolean"
+  }, {
+    "name" : "bottomPlacement",
+    "type" : "boolean"
+  }, {
+    "name" : "startPlacement",
+    "type" : "boolean"
+  }, {
+    "name" : "showHorizontal",
+    "type" : "boolean"
+  }, {
+    "name" : "labelText",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "footer",
+  "type" : "FOOTER",
+  "params" : [ ]
+}, {
+  "name" : "header",
+  "type" : "HEADER",
+  "params" : [ ]
+}, {
+  "name" : "intl_phone_number",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "datavalue",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "leftnav",
+  "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "radioSet",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "datavalue",
+    "type" : "string"
+  }, {
+    "name" : "showHorizontal",
+    "type" : "boolean"
+  }, {
+    "name" : "showDisable",
+    "type" : "boolean"
+  }, {
+    "name" : "required",
+    "type" : "boolean"
+  }, {
+    "name" : "style",
+    "type" : "string"
+  }, {
+    "name" : "topPlacement",
+    "type" : "boolean"
+  }, {
+    "name" : "bottomPlacement",
+    "type" : "boolean"
+  }, {
+    "name" : "startPlacement",
+    "type" : "boolean"
+  }, {
+    "name" : "labelText",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "radioTest",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "rightnav",
+  "type" : "RIGHTNAV",
+  "params" : [ ]
+}, {
+  "name" : "switchComponent",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "materialSwitch",
+    "type" : "boolean"
+  }, {
+    "name" : "iOSSwitch",
+    "type" : "boolean"
+  } ]
+}, {
+  "name" : "test",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "test2",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "textField",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "leading_icon",
+    "type" : "boolean"
+  }, {
+    "name" : "trailing_icon",
+    "type" : "boolean"
+  }, {
+    "name" : "leading_icon_class",
+    "type" : "string"
+  }, {
+    "name" : "trailing_icon_class",
+    "type" : "string"
+  }, {
+    "name" : "style",
+    "type" : "string"
+  }, {
+    "name" : "state",
+    "type" : "string"
+  }, {
+    "name" : "inputType",
+    "type" : "string"
+  }, {
+    "name" : "supporting_text",
+    "type" : "string"
+  }, {
+    "name" : "required",
+    "type" : "boolean"
+  }, {
+    "name" : "input_text",
+    "type" : "string"
+  }, {
+    "name" : "label_text",
+    "type" : "string"
+  }, {
+    "name" : "placeholder_text",
+    "type" : "string"
+  }, {
+    "name" : "show_supporting_text",
+    "type" : "boolean"
+  }, {
+    "name" : "text_configurations",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "textFieldCustom",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "showLeadingIcon",
+    "type" : "boolean"
+  }, {
+    "name" : "showTrailingIcon",
+    "type" : "boolean"
+  }, {
+    "name" : "leadingIconClass",
+    "type" : "string"
+  }, {
+    "name" : "trailingIconClass",
+    "type" : "string"
+  }, {
+    "name" : "style",
+    "type" : "string"
+  }, {
+    "name" : "disable",
+    "type" : "boolean"
+  }, {
+    "name" : "inputType",
+    "type" : "string"
+  }, {
+    "name" : "caption",
+    "type" : "string"
+  }, {
+    "name" : "supportingText",
+    "type" : "string"
+  }, {
+    "name" : "required",
+    "type" : "boolean"
+  } ]
+}, {
+  "name" : "textFiledPreview",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "toggleButton",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "m3Switch",
+    "type" : "boolean"
+  }, {
+    "name" : "iOSSwitch",
+    "type" : "boolean"
+  }, {
+    "name" : "m2Switch",
+    "type" : "boolean"
+  }, {
+    "name" : "showDisable",
+    "type" : "boolean"
+  }, {
+    "name" : "defaultChecked",
+    "type" : "boolean"
+  } ]
+}, {
+  "name" : "topnav",
+  "type" : "TOPNAV",
+  "params" : [ ]
+} ]

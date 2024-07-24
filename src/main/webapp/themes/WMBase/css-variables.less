@@ -1,0 +1,360 @@
+// CSS Variables
+/*=========
+css variables doesn't support by less functions to generate lighten, darken, fade, etc.
+We are using color-mix function of css variables.
+ex: color-mix(in srgb, color1 50%, color2 30%)
+// Note: As less doesn't support css funsctions all the css funcions should be with less excepetion to support.
+// ex: ~"calc(100vh - 50px)" instead of calc(100vh - 50px) //
+// ex: ~"color-mix(in srgb, color1 50%, color2 30%)" instead of color-mix(in srgb, color1 50%, color2 30%) //
+=========*/
+
+
+// Alias token as color.background.primary = blue100
+// ex: --color-background-primary
+// Component specific token as button.fab.color.secondary.label = color.secondary
+// ex: --button-fab-color-secondary-label
+
+// variable defines as system.category.variant.scale for design tokens
+// Ex: --wm-color-primary-50
+:root {
+  /**--Colors--**/
+  --wm-color-primary :                        rgb(0, 108, 255);
+  --wm-color-secondary :                      rgb(49, 37, 207);
+  --wm-color-tertiary :                       rgb(49, 37, 207);
+  --wm-color-info :                           rgb(37, 142, 207);
+  --wm-color-warning :                        rgb(246, 115, 41);
+  --wm-color-error :                          rgb(220, 54, 46);
+  --wm-color-neutral :                        rgb(121, 118, 125);
+  --wm-color-contrast-light:                  rgb(255, 255, 255);
+  --wm-color-contrast-dark:                   rgb(0, 0, 0);
+  --wm-surface-light:                         rgb(255, 255, 255);
+  --wm-surface-dark:                          rgb(0, 0, 0);
+  --wm-body-bg:                               var(--wm-surface-light);
+  --wm-body-font-weight:                      var(--wm-font-weight-regular);
+  --wm-body-text-transform:                   none;
+  --wm-text-color:                            var(--wm-color-on-surface);
+  --wm-link-color:                            var(--wm-color-primary);
+  --wm-text-muted-color:                      var(--wm-color-on-surface-variant);
+  --wm-separator-color:                       var(--wm-color-neutral-30);
+  --wm-border-color:                          var(--wm-color-neutral-30);
+
+
+
+  /**Color Variants**/
+  /*--primary--*/
+  --wm-color-primary-0 :                      ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-primary-10 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-primary-20 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-primary-30 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-primary-40 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-primary-50 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-primary-60 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 20%)";
+  --wm-color-primary-70 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 50%)";
+  --wm-color-primary-80 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 75%)";
+  --wm-color-primary-90 :                     ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 90%)";
+  --wm-color-primary-100 :                    ~"color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 100%)";
+
+  /*--secondary--*/   
+  --wm-color-secondary-0 :                      ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-secondary-10 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-secondary-20 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-secondary-30 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-secondary-40 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-secondary-50 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-secondary-60 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 20%)";
+  --wm-color-secondary-70 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 50%)";
+  --wm-color-secondary-80 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 75%)";
+  --wm-color-secondary-90 :                     ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 90%)";
+  --wm-color-secondary-100 :                    ~"color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 100%)";
+
+  /*--tertiary--*/   
+  --wm-color-tertiary-0 :                      ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-tertiary-10 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-tertiary-20 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-tertiary-30 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-tertiary-40 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-tertiary-50 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-tertiary-60 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 20%)";
+  --wm-color-tertiary-70 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 50%)";
+  --wm-color-tertiary-80 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 75%)";
+  --wm-color-tertiary-90 :                     ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 90%)";
+  --wm-color-tertiary-100 :                    ~"color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 100%)";
+
+  /*--info--*/
+  --wm-color-info-0 :                      ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-info-10 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-info-20 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-info-30 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-info-40 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-info-50 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-info-60 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 20%)";
+  --wm-color-info-70 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 50%)";
+  --wm-color-info-80 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 75%)";
+  --wm-color-info-90 :                     ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 90%)";
+  --wm-color-info-100 :                    ~"color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 100%)";
+
+  /*--success--*/
+  --wm-color-success :                        rgb(159, 222, 10);//--wm-color-success-50
+  --wm-color-success-0 :                      ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-success-10 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-success-20 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-success-30 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-success-40 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-success-50 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-success-60 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 20%)";
+  --wm-color-success-70 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 50%)";
+  --wm-color-success-80 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 75%)";
+  --wm-color-success-90 :                     ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 90%)";
+  --wm-color-success-100 :                    ~"color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 100%)";
+
+  /*--warning--*/
+  --wm-color-warning-0 :                      ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-warning-10 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-warning-20 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-warning-30 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-warning-40 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-warning-50 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-warning-60 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 20%)";
+  --wm-color-warning-70 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 50%)";
+  --wm-color-warning-80 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 75%)";
+  --wm-color-warning-90 :                     ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 90%)";
+  --wm-color-warning-100 :                    ~"color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 100%)";
+
+  /*--error/danger--*/
+  --wm-color-error-0 :                      ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-error-10 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-error-20 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-error-30 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-error-40 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-error-50 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-error-60 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 20%)";
+  --wm-color-error-70 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 50%)";
+  --wm-color-error-80 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 75%)";
+  --wm-color-error-90 :                     ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 90%)";
+  --wm-color-error-100 :                    ~"color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 100%)";
+
+  /*--neutral--*/
+  --wm-color-neutral-0 :                      ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 100%)";
+  --wm-color-neutral-10 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-neutral-20 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 75%)";
+  --wm-color-neutral-30 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-neutral-40 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 20%)";
+  --wm-color-neutral-50 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-neutral-60 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 20%)";
+  --wm-color-neutral-70 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 50%)";
+  --wm-color-neutral-80 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 75%)";
+  --wm-color-neutral-90 :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 90%)";
+  --wm-color-neutral-100 :                    ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 100%)";
+
+  /*--surface--*/
+  --wm-color-surface-dim :                    ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 87%)";
+  --wm-color-surface :                        ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 98%)";
+  --wm-color-surface-bright :                 ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 98%)";
+  --wm-color-surface-container-lowest :       ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 100%)";
+  --wm-color-surface-container-low :          ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 96%)";
+  --wm-color-surface-container :              ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 94%)";
+  --wm-color-surface-container-high :         ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 92%)";
+  --wm-color-surface-container-highest :      ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 90%)";
+  --wm-color-on-surface :                     ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 90%)";
+  --wm-color-on-surface-variant :             ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 50%)";
+  --wm-color-outline :                        ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 0%)";
+  --wm-color-outline-variant :                ~"color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 80%)";
+
+  /**--Font--**/
+  --wm-font-family:                           "Roboto", sans-serif;
+  --wm-font-family-backup:                    "Arial", sans-serif;
+  --wm-font-weight-thin:                      100;
+  --wm-font-weight-extralight:                200;
+  --wm-font-weight-light:                     300;
+  --wm-font-weight-regular:                   400;
+  --wm-font-weight-medium:                    500;
+  --wm-font-weight-semibold:                  600;
+  --wm-font-weight-bold:                      700;
+  --wm-font-weight-extrabold:                 800;
+  --wm-font-weight-black:                     900;
+  --wm-line-height:                           1.25;
+  --wm-heading-text-color:                    var(--wm-text-color);
+  --wm-heading-font-family:                   "Roboto", sans-serif;
+  --wm-font-size-base:                        0.875rem;//14px
+  --wm-h1-font-size:                          1.75rem;//28px;
+  --wm-h2-font-size:                          1.5rem;//24px;
+  --wm-h3-font-size:                          1.125rem;//18px;
+  --wm-h4-font-size:                          1rem;//16px;
+  --wm-h5-font-size:                          0.875rem;//14px;
+  --wm-h6-font-size:                          0.75rem;//12px;
+
+  // icon size
+  --wm-icon-font-family:                      'wmicons', 'wavicon';
+  --wm-icon-size-xs:                           12px; 
+  --wm-icon-size-sm:                           20px;
+  --wm-icon-size-md:                           24px;
+  --wm-icon-size-lg:                           32px;
+  --wm-icon-size-xl:                           40px;
+
+
+
+  /**--Break points--**/
+  --wm-breakpoint-sm:                         576px;
+  --wm-breakpoint-md:                         768px;
+  --wm-breakpoint-lg:                         992px;
+  --wm-breakpoint-xl:                         1200px;
+  --wm-page-max-width:                        1440px;
+
+  
+  /**--Standard utility--**/
+  //standard spacing values are multiple of 4 like 0, 4, 8, 12, 16, 24, 48
+  --wm-rule-space:                            4px;
+  --wm-space-0:                               ~"calc(var(--wm-rule-space) * 0)";//0px
+  --wm-space-1:                               ~"calc(var(--wm-rule-space) * 1)";//4px
+  --wm-space-2:                               ~"calc(var(--wm-rule-space) * 2)";//8px
+  --wm-space-3:                               ~"calc(var(--wm-rule-space) * 3)";//12px;
+  --wm-space-4:                               ~"calc(var(--wm-rule-space) * 4)";//16px;
+  --wm-space-5:                               ~"calc(var(--wm-rule-space) * 5)";//20px;
+  --wm-space-6:                               ~"calc(var(--wm-rule-space) * 6)";//24px;
+  --wm-space-7:                               ~"calc(var(--wm-rule-space) * 7)";//28px;
+  --wm-space-8:                               ~"calc(var(--wm-rule-space) * 8)";//32px;
+  --wm-space-9:                               ~"calc(var(--wm-rule-space) * 9)";//36px;
+  --wm-space-10:                              ~"calc(var(--wm-rule-space) * 10)";//40px;
+  --wm-space-11:                              ~"calc(var(--wm-rule-space) * 11)";//44px;
+  --wm-space-12:                              ~"calc(var(--wm-rule-space) * 12)";//48px;
+
+  // border radius
+  // --wm-rule-radius:                           8px;
+  --wm-radius-none:                           0px;
+  --wm-radius-xs:                             4px;
+  --wm-radius-sm:                             6px;
+  --wm-radius-md:                             8px;
+  --wm-radius-lg:                             12px;
+  --wm-radius-xl:                             16px;
+  --wm-radius-circle:                         50%;
+
+
+
+  /**--Page Layout--**/
+  /*--app header--*/
+  --wm-header-bg-color:                       var(--wm-color-secondary);
+  --wm-header-text-color:                     var(--wm-surface-light);
+  --wm-header-link-size:                      var(--wm-h4-font-size);
+  --wm-header-link-color:                     var(--wm-surface-light);
+  --wm-header-link-color-hover:               var(--wm-surface-light);
+  --wm-header-link-color-active:              var(--wm-surface-light);
+  --wm-header-logo-height:                    2.5rem;
+  --wm-header-height:                         4.5rem;
+  --wm-header-z-index:                        2;
+  --wm-header-shadow:                         inset 0px 0px 0 0 var(--wm-color-secondary);
+  --wm-header-padding:                        0;
+  --wm-header-leftnav-toggle-width:           50px;
+
+  /*--app top nav--*/
+  --wm-top-nav-box-shadow:                    none;
+  --wm-top-nav-z-index:                       3;
+
+  /*--app side panel--*/
+  --wm-aside-panel-width:                     262px;
+  --wm-aside-panel-link-height:               38px;
+  --wm-aside-panel-collapsible-width:         0px;
+  --wm-aside-separator-color:                 var(--wm-color-light-grey-500);
+  --wm-aside-panel-shadow:                    none;//3px -3px 6px 0 rgba(0,0,0,0.16);
+  --wm-aside-panel-bg-color:                  var(--wm-color-contrast-light);
+  --wm-aside-panel-text-color:                var(--wm-text-color);
+  --wm-aside-panel-link-spacing:              var(--wm-space-2) var(--wm-space-3);
+  --wm-aside-panel-link-color:                var(--wm-text-color);
+  --wm-aside-panel-link-hover-color:          var(--wm-color-primary-60);
+  --wm-aside-panel-link-active-color:         var(--wm-color-primary);
+  --wm-aside-panel-link-bg-color:             var(--wm-color-contrast-light);
+  --wm-aside-panel-link-hover-bg-color:       var(--wm-color-contrast-light);
+  --wm-aside-panel-link-active-bg-color:      var(--wm-color-primary-10);
+  --wm-aside-panel-link-font-size:            var(--wm-font-size-base);
+  --wm-aside-panel-link-icon-size:            var(--wm-icon-size-sm);
+  --wm-aside-panel-link-icon-color:           var(--wm-text-color);
+  --wm-aside-panel-link-icon-hover-color:     var(--wm-color-primary-60);
+  --wm-aside-panel-link-icon-active-color:    var(--wm-color-primary);
+  --wm-aside-panel-link-indicator-active-color: transparent;
+  
+  /*--app page content--*/
+  --wm-page-bg-color:                         var(--wm-color-contrast-light);
+  --wm-page-text-color:                       var(--wm-color-contrast-dark);
+  --wm-page-text-muted-color:                 var(--wm-color-dark-grey-500);
+
+  /*--app footer--*/
+  --wm-footer-spacing:                        3.5rem 2.5rem;
+  --wm-footer-bg:                             rgba(242, 244, 247, 1);
+  --wm-footer-text-color:                     rgba(22, 28, 45, 1);
+  --wm-footer-text-muted-color:               rgba(135, 143, 157, 1);
+  --wm-footer-height:                         80px;
+  --wm-footer-separator-color:                transparent;
+  
+
+
+
+  /**--Components--**/
+  /*--form filed--*/
+  //caption
+  --wm-caption-size:                          12px;
+  --wm-caption-color:                         var(--wm-color-on-surface-variant);
+  --wm-caption-weight:                        var(--wm-font-weight-regular);
+  --wm-caption-offset:                        0;
+  --wm-caption-inset:                         0;
+  //textfiled
+  --wm-input-color:                           var(--wm-color-on-surface);
+  --wm-input-bg:                              var(--wm-color-surface-container-lowest);
+  --wm-input-border-color:                    var(--wm-color-outline);
+  --wm-input-radius:                          4px;
+  --wm-input-height:                          56px;
+  --wm-input-padding:                         16px;
+  --wm-input-text-size:                       1rem;
+  --wm-input-place-holder:                    var(--wm-text-muted-color);
+
+  /*--button--*/
+  --wm-btn-font-size:                         var(--wm-h4-font-size);
+  --wm-btn-font-family:                       var(--wm-font-family);
+  --wm-btn-font-weight:                       var(--wm-font-weight-semibold);
+  --wm-btn-shadow:                            none;
+  --wm-btn-height-base:                       40px;
+  --wm-btn-height-xs:                         26px;
+  --wm-btn-height-sm:                         32px;
+  --wm-btn-height-lg:                         44px;
+  --wm-btn-min-width:                         auto;//120px;
+  --wm-btn-text-color:                        var(--wm-text-color);
+  --wm-btn-bg:                                var(--wm-color-surface-container);
+  --wm-btn-border-color:                      var(--wm-color-surface-container-highest);
+  --wm-btn-space:                             var(--wm-space-2) var(--wm-space-8);
+  --wm-btn-radius-base:                       var(--wm-space-1);
+  --wm-btn-state-layer-color:                 transparent;
+  --wm-btn-hover-state-layer-opacity:         0.04;
+  --wm-btn-pressed-state-layer-opacity:       0.12;
+  --wm-btn-contrast-light:                    #ffffff;
+  --wm-btn-contrast-dark:                     rgba(0,0,0,0.87);
+  --wm-btn-raised-shadow:                     3px 3px 6px 0 rgba(0,0,0,0.16);
+  --wm-btn-raised-hover-shadow:               0px 2px 4px -1px rgba(0, 0, 0, .2), 0px 4px 5px 0px rgba(0, 0, 0, .14), 0px 1px 10px 0px rgba(0, 0, 0, .12);
+  --wm-btn-raised-active-shadow:              0px 5px 5px -3px rgba(0, 0, 0, .2), 0px 8px 10px 1px rgba(0, 0, 0, .14), 0px 3px 14px 2px rgba(0, 0, 0, .12);
+
+  /*--app grid (or) Data Table --*/
+  --wm-app-grid-bg:                           var(--wm-color-contrast-light);
+  --wm-app-grid-radius:                       8px;
+  --wm-app-grid-spacing:                      var(--wm-space-4);
+  --wm-app-grid-table-bg-color:               var(--wm-color-contrast-light);
+  --wm-app-grid-table-radius:                 0;
+  --wm-app-grid-header-bg:                    var(--wm-color-primary-10);
+  --wm-app-grid-header-text-color:            var(--wm-text-color);
+  --wm-app-grid-header-radius:                0;
+  --wm-app-grid-separator:                    var(--wm-color-mid-grey-100);
+  --wm-app-grid-text-color:                   var(--wm-text-color);
+
+  /*--pagination--*/
+  --wm-pagination-color:                      var(--wm-text-muted-color);
+  --wm-pagination-basic-bg:                   var(--wm-color-contrast-light);
+  --wm-pagination-hover-text:                 var(--wm-text-color);
+  --wm-pagination-hover-bg:                   var(--wm-color-primary-10);
+  --wm-pagination-active-text:                var(--wm-color-contrast-light);
+  --wm-pagination-active-bg:                  var(--wm-color-primary);
+  --wm-pagination-disabled-text:              var(--wm-text-muted-color);
+  --wm-pagination-disabled-bg:                var(--wm-color-light-grey-300);
+
+  //card
+  --wm-card-bg:                               var(--wm-surface-light);
+  --wm-card-border-color:                     var(--wm-border-color);
+  --wm-card-shadow:                           0px 3px 4px 0px var(--wm-border-color);
+
+
+}

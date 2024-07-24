@@ -1,0 +1,362 @@
+.app-toggle.checkbox.material-switch {
+    padding: 6px 0;
+    left: -6px;
+}
+
+.app-toggle.checkbox.material-switch>label.unchecked,
+.app-toggle.checkbox.material-switch>label {
+    z-index: 0;
+    position: relative;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.87);
+    background-color: unset !important;
+    border: unset;
+    font-size: 12px;
+    line-height: 1.5;
+    width: auto;
+    height: unset;
+    box-shadow: unset;
+    border-radius: unset;
+    overflow: visible;
+}
+
+.app-toggle.checkbox.material-switch>label.unchecked>.switch {
+    display: none;
+}
+
+
+/* Input */
+
+.app-toggle.checkbox.material-switch>label>input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    z-index: -1;
+    position: absolute;
+    top: -8px;
+    display: block;
+    margin: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.38);
+    outline: none;
+    opacity: 0;
+    transform: scale(1);
+    pointer-events: none;
+    transition: opacity 0.3s 0.1s, transform 0.2s 0.1s;
+    right: 0px;
+}
+
+.app-toggle.checkbox.material-switch>label.unchecked>input {
+    /* right: 10px; */
+    left: 4px;
+}
+
+.app-checkbox.checkbox.material-switch label input:focus {
+    outline: unset !important;
+}
+
+
+/* Caption */
+
+
+/* .app-toggle.checkbox.material-switch .caption {
+    visibility: unset;
+} */
+
+.app-toggle.checkbox.material-switch>label>.caption {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+/* Track */
+
+.app-toggle.checkbox.material-switch>label>.caption::before {
+    content: "";
+    /* float: right; */
+    display: inline-block;
+    margin: 5px 0 5px 14px;
+    border-radius: 7px;
+    width: 40px;
+    height: 14px;
+    background-color: rgba(0, 0, 0, 0.38);
+    vertical-align: top;
+    transition: background-color 0.2s, opacity 0.2s;
+    visibility: visible;
+    float: left;
+}
+
+
+/* Thumb */
+
+.app-toggle.checkbox.material-switch>label>.caption::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    /* right: 16px; */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    transition: background-color 0.2s, transform 0.2s;
+    visibility: visible;
+    left: 16px;
+}
+
+.app-toggle.checkbox.material-switch>label.unchecked>.caption::after {
+    /* right: 20px; */
+    left: 14px;
+}
+
+
+/* Checked */
+
+.app-toggle.checkbox.material-switch>label>input:checked {
+    /* right: -10px; */
+    background-color: #6750A4;
+    left: 25px;
+}
+
+.app-toggle.checkbox.material-switch>label>input:checked+.caption::before {
+    background-color: #6750a499;
+}
+
+.app-toggle.checkbox.material-switch>label>input:checked+.caption::after {
+    background-color: #6750A4;
+    transform: translateX(18px);
+}
+
+.app-toggle.checkbox.material-switch input[type=checkbox]:checked~.switch,
+.app-toggle.checkbox.material-switch>label.unchecked>.switch {
+    display: none;
+}
+
+
+/* default checked  */
+
+
+/* .app-toggle.checkbox.material-switch.default-checked>label.unchecked>input[type="checkbox"]+.caption::after {
+    background-color: #6750A4;
+    transform: translateX(18px);
+} */
+
+
+/* Hover, Focus */
+
+.app-toggle.checkbox.material-switch>label:hover>input {
+    opacity: 0.04;
+}
+
+.app-toggle.checkbox.material-switch>label>input:focus {
+    opacity: 0.12;
+}
+
+.app-toggle.checkbox.material-switch>label:hover>input:focus {
+    opacity: 0.16;
+}
+
+
+/* Active */
+
+.app-toggle.checkbox.material-switch>label>input:active {
+    opacity: 1;
+    transform: scale(0);
+    transition: transform 0s, opacity 0s;
+}
+
+.app-toggle.checkbox.material-switch>label>input:active+.caption::before {
+    background-color: #6750A4;
+}
+
+.app-toggle.checkbox.material-switch>label>input:checked:active+.caption::before {
+    background-color: rgba(0, 0, 0, 0.38);
+}
+
+
+/* Disabled */
+
+.app-toggle.checkbox.switch-disabled.material-switch>label>input:disabled {
+    opacity: 0;
+}
+
+.app-toggle.checkbox.switch-disabled.material-switch.switch-disabled>label>input:disabled+.caption {
+    color: rgb(0, 0, 0);
+    opacity: 0.38;
+    cursor: default;
+}
+
+.app-toggle.checkbox.switch-disabled.material-switch.switch-disabled>label>input:disabled+.caption::before {
+    background-color: rgba(0, 0, 0, 0.38);
+}
+
+.app-toggle.checkbox.switch-disabled.material-switch.switch-disabled>label>input:checked:disabled+.caption::before {
+    background-color: #6750A4;
+}
+
+
+/* iOS Switch Styles */
+
+.app-toggle.checkbox.iOS-switch label.unchecked,
+.app-toggle.checkbox.iOS-switch label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: unset;
+    border: unset;
+    height: unset;
+    width: unset;
+    margin-left: 8px;
+}
+
+.app-toggle.checkbox.iOS-switch label.unchecked {
+    background-color: #E9E9EA !important;
+}
+
+.app-toggle.checkbox.iOS-switch .caption {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 26px;
+    background-color: #E9E9EA;
+    border-radius: 23px;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+}
+
+
+/* .app-toggle.checkbox.iOS-switch .caption::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: auto;
+    height: 22px;
+    background-color: #E9E9EA;
+    border-radius: 11px;
+    transform: translateX(2px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+} */
+
+.app-toggle.checkbox.iOS-switch .caption::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    transform: translateX(2px);
+    transition: transform 0.3s ease;
+    visibility: visible;
+}
+
+.app-toggle.checkbox.iOS-switch:active .caption::after {
+    width: 28px;
+    transform: translateX(16px);
+}
+
+.app-toggle.checkbox.iOS-switch input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.app-toggle.checkbox.iOS-switch input:checked+.caption {
+    background-color: #65C466;
+}
+
+
+/* .app-toggle.checkbox.iOS-switch input:checked+.caption::before {
+    transform: translateX(18px);
+    opacity: 0;
+    width: unset;
+} */
+
+.app-toggle.checkbox.iOS-switch input:checked+.caption::after {
+    transform: translateX(22px);
+}
+
+.app-toggle.checkbox.iOS-switch input[type=checkbox]:checked~.switch,
+.app-toggle.checkbox.iOS-switch>label.unchecked>.switch {
+    display: none;
+}
+
+
+/* Material3 Design Styles  */
+
+.app-toggle.checkbox.material3-switch label.unchecked,
+.app-toggle.checkbox.material3-switch label {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    width: 50px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: unset;
+    /* background-color: rgb(103, 80, 164); */
+    background-color: unset;
+    border: unset;
+}
+
+.app-toggle.checkbox.material3-switch label .caption {
+    position: absolute;
+    inset: 0;
+    /* height: 28px;
+    width: 48px; */
+    cursor: pointer;
+    border: 2px solid rgb(121, 116, 126);
+    background-color: #E6E0E9;
+    border-radius: 28px;
+    visibility: visible;
+    color: transparent;
+}
+
+.app-toggle.checkbox.material3-switch label input {
+    display: none;
+}
+
+.app-toggle.checkbox.material3-switch label .caption::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0px;
+    background: rgb(121, 116, 126);
+    border-radius: 28px;
+    margin: 6px;
+    transition: 0.25s ease-in;
+    visibility: visible;
+}
+
+.app-toggle.checkbox.material3-switch label input:checked~.caption::before {
+    width: 24px;
+    height: 24px;
+    left: 18px;
+    background: white;
+    margin: 2px;
+    border-color: transparent;
+}
+
+
+/* .app-toggle.checkbox.material3-switch label input:not(:disabled):hover+span.caption::after {
+    background-color: rgb(73, 69, 78);
+} */
+
+.app-toggle.checkbox.material3-switch>label>input[type="checkbox"]:checked~span.caption {
+    background: rgb(103, 80, 164);
+    border: 0.5mm solid rgb(103, 80, 164);
+}
+
+.app-toggle.checkbox.material3-switch input[type=checkbox]:checked~.switch,
+.app-toggle.checkbox.material3-switch>label.unchecked>.switch {
+    display: none;
+}

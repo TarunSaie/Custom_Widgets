@@ -1,0 +1,3095 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+html {
+  font-size: 100%;
+  /*to support rem based units calculation*/
+}
+/**--import css variables file--**/
+/*=========
+css variables doesn't support by less functions to generate lighten, darken, fade, etc.
+We are using color-mix function of css variables.
+ex: color-mix(in srgb, color1 50%, color2 30%)
+// Note: As less doesn't support css funsctions all the css funcions should be with less excepetion to support.
+// ex: ~"calc(100vh - 50px)" instead of calc(100vh - 50px) //
+// ex: ~"color-mix(in srgb, color1 50%, color2 30%)" instead of color-mix(in srgb, color1 50%, color2 30%) //
+=========*/
+:root {
+  /**--Colors--**/
+  --wm-color-primary: #006cff;
+  --wm-color-secondary: #3125cf;
+  --wm-color-tertiary: #3125cf;
+  --wm-color-info: #258ecf;
+  --wm-color-warning: #f67329;
+  --wm-color-error: #dc362e;
+  --wm-color-neutral: #79767d;
+  --wm-color-contrast-light: #ffffff;
+  --wm-color-contrast-dark: #000000;
+  --wm-surface-light: #ffffff;
+  --wm-surface-dark: #000000;
+  --wm-body-bg: var(--wm-surface-light);
+  --wm-body-font-weight: var(--wm-font-weight-regular);
+  --wm-body-text-transform: none;
+  --wm-text-color: var(--wm-color-on-surface);
+  --wm-link-color: var(--wm-color-primary);
+  --wm-text-muted-color: var(--wm-color-on-surface-variant);
+  --wm-separator-color: var(--wm-color-neutral-30);
+  --wm-border-color: var(--wm-color-neutral-30);
+  /**Color Variants**/
+  /*--primary--*/
+  --wm-color-primary-0: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 100%);
+  --wm-color-primary-10: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 90%);
+  --wm-color-primary-20: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 75%);
+  --wm-color-primary-30: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 50%);
+  --wm-color-primary-40: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 20%);
+  --wm-color-primary-50: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-dark) 0%);
+  --wm-color-primary-60: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 20%);
+  --wm-color-primary-70: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 50%);
+  --wm-color-primary-80: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 75%);
+  --wm-color-primary-90: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 90%);
+  --wm-color-primary-100: color-mix(in srgb, var(--wm-color-primary), var(--wm-color-contrast-light) 100%);
+  /*--secondary--*/
+  --wm-color-secondary-0: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 100%);
+  --wm-color-secondary-10: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 90%);
+  --wm-color-secondary-20: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 75%);
+  --wm-color-secondary-30: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 50%);
+  --wm-color-secondary-40: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 20%);
+  --wm-color-secondary-50: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-dark) 0%);
+  --wm-color-secondary-60: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 20%);
+  --wm-color-secondary-70: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 50%);
+  --wm-color-secondary-80: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 75%);
+  --wm-color-secondary-90: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 90%);
+  --wm-color-secondary-100: color-mix(in srgb, var(--wm-color-secondary), var(--wm-color-contrast-light) 100%);
+  /*--tertiary--*/
+  --wm-color-tertiary-0: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 100%);
+  --wm-color-tertiary-10: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 90%);
+  --wm-color-tertiary-20: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 75%);
+  --wm-color-tertiary-30: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 50%);
+  --wm-color-tertiary-40: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 20%);
+  --wm-color-tertiary-50: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-dark) 0%);
+  --wm-color-tertiary-60: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 20%);
+  --wm-color-tertiary-70: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 50%);
+  --wm-color-tertiary-80: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 75%);
+  --wm-color-tertiary-90: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 90%);
+  --wm-color-tertiary-100: color-mix(in srgb, var(--wm-color-tertiary), var(--wm-color-contrast-light) 100%);
+  /*--info--*/
+  --wm-color-info-0: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 100%);
+  --wm-color-info-10: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 90%);
+  --wm-color-info-20: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 75%);
+  --wm-color-info-30: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 50%);
+  --wm-color-info-40: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 20%);
+  --wm-color-info-50: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-dark) 0%);
+  --wm-color-info-60: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 20%);
+  --wm-color-info-70: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 50%);
+  --wm-color-info-80: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 75%);
+  --wm-color-info-90: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 90%);
+  --wm-color-info-100: color-mix(in srgb, var(--wm-color-info), var(--wm-color-contrast-light) 100%);
+  /*--success--*/
+  --wm-color-success: #9fde0a;
+  --wm-color-success-0: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 100%);
+  --wm-color-success-10: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 90%);
+  --wm-color-success-20: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 75%);
+  --wm-color-success-30: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 50%);
+  --wm-color-success-40: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 20%);
+  --wm-color-success-50: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-dark) 0%);
+  --wm-color-success-60: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 20%);
+  --wm-color-success-70: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 50%);
+  --wm-color-success-80: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 75%);
+  --wm-color-success-90: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 90%);
+  --wm-color-success-100: color-mix(in srgb, var(--wm-color-success), var(--wm-color-contrast-light) 100%);
+  /*--warning--*/
+  --wm-color-warning-0: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 100%);
+  --wm-color-warning-10: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 90%);
+  --wm-color-warning-20: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 75%);
+  --wm-color-warning-30: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 50%);
+  --wm-color-warning-40: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 20%);
+  --wm-color-warning-50: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-dark) 0%);
+  --wm-color-warning-60: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 20%);
+  --wm-color-warning-70: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 50%);
+  --wm-color-warning-80: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 75%);
+  --wm-color-warning-90: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 90%);
+  --wm-color-warning-100: color-mix(in srgb, var(--wm-color-warning), var(--wm-color-contrast-light) 100%);
+  /*--error/danger--*/
+  --wm-color-error-0: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 100%);
+  --wm-color-error-10: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 90%);
+  --wm-color-error-20: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 75%);
+  --wm-color-error-30: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 50%);
+  --wm-color-error-40: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 20%);
+  --wm-color-error-50: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-dark) 0%);
+  --wm-color-error-60: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 20%);
+  --wm-color-error-70: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 50%);
+  --wm-color-error-80: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 75%);
+  --wm-color-error-90: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 90%);
+  --wm-color-error-100: color-mix(in srgb, var(--wm-color-error), var(--wm-color-contrast-light) 100%);
+  /*--neutral--*/
+  --wm-color-neutral-0: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 100%);
+  --wm-color-neutral-10: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 90%);
+  --wm-color-neutral-20: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 75%);
+  --wm-color-neutral-30: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 50%);
+  --wm-color-neutral-40: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 20%);
+  --wm-color-neutral-50: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 0%);
+  --wm-color-neutral-60: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 20%);
+  --wm-color-neutral-70: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 50%);
+  --wm-color-neutral-80: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 75%);
+  --wm-color-neutral-90: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 90%);
+  --wm-color-neutral-100: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 100%);
+  /*--surface--*/
+  --wm-color-surface-dim: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 87%);
+  --wm-color-surface: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 98%);
+  --wm-color-surface-bright: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 98%);
+  --wm-color-surface-container-lowest: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 100%);
+  --wm-color-surface-container-low: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 96%);
+  --wm-color-surface-container: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 94%);
+  --wm-color-surface-container-high: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 92%);
+  --wm-color-surface-container-highest: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 90%);
+  --wm-color-on-surface: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 90%);
+  --wm-color-on-surface-variant: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 50%);
+  --wm-color-outline: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-dark) 0%);
+  --wm-color-outline-variant: color-mix(in srgb, var(--wm-color-neutral), var(--wm-color-contrast-light) 80%);
+  /**--Font--**/
+  --wm-font-family: "Roboto", sans-serif;
+  --wm-font-family-backup: "Arial", sans-serif;
+  --wm-font-weight-thin: 100;
+  --wm-font-weight-extralight: 200;
+  --wm-font-weight-light: 300;
+  --wm-font-weight-regular: 400;
+  --wm-font-weight-medium: 500;
+  --wm-font-weight-semibold: 600;
+  --wm-font-weight-bold: 700;
+  --wm-font-weight-extrabold: 800;
+  --wm-font-weight-black: 900;
+  --wm-line-height: 1.25;
+  --wm-heading-text-color: var(--wm-text-color);
+  --wm-heading-font-family: "Roboto", sans-serif;
+  --wm-font-size-base: 0.875rem;
+  --wm-h1-font-size: 1.75rem;
+  --wm-h2-font-size: 1.5rem;
+  --wm-h3-font-size: 1.125rem;
+  --wm-h4-font-size: 1rem;
+  --wm-h5-font-size: 0.875rem;
+  --wm-h6-font-size: 0.75rem;
+  --wm-icon-font-family: 'wmicons', 'wavicon';
+  --wm-icon-size-xs: 12px;
+  --wm-icon-size-sm: 20px;
+  --wm-icon-size-md: 24px;
+  --wm-icon-size-lg: 32px;
+  --wm-icon-size-xl: 40px;
+  /**--Break points--**/
+  --wm-breakpoint-sm: 576px;
+  --wm-breakpoint-md: 768px;
+  --wm-breakpoint-lg: 992px;
+  --wm-breakpoint-xl: 1200px;
+  --wm-page-max-width: 1440px;
+  /**--Standard utility--**/
+  --wm-rule-space: 4px;
+  --wm-space-0: calc(var(--wm-rule-space) * 0);
+  --wm-space-1: calc(var(--wm-rule-space) * 1);
+  --wm-space-2: calc(var(--wm-rule-space) * 2);
+  --wm-space-3: calc(var(--wm-rule-space) * 3);
+  --wm-space-4: calc(var(--wm-rule-space) * 4);
+  --wm-space-5: calc(var(--wm-rule-space) * 5);
+  --wm-space-6: calc(var(--wm-rule-space) * 6);
+  --wm-space-7: calc(var(--wm-rule-space) * 7);
+  --wm-space-8: calc(var(--wm-rule-space) * 8);
+  --wm-space-9: calc(var(--wm-rule-space) * 9);
+  --wm-space-10: calc(var(--wm-rule-space) * 10);
+  --wm-space-11: calc(var(--wm-rule-space) * 11);
+  --wm-space-12: calc(var(--wm-rule-space) * 12);
+  --wm-radius-none: 0px;
+  --wm-radius-xs: 4px;
+  --wm-radius-sm: 6px;
+  --wm-radius-md: 8px;
+  --wm-radius-lg: 12px;
+  --wm-radius-xl: 16px;
+  --wm-radius-circle: 50%;
+  /**--Page Layout--**/
+  /*--app header--*/
+  --wm-header-bg-color: var(--wm-color-secondary);
+  --wm-header-text-color: var(--wm-surface-light);
+  --wm-header-link-size: var(--wm-h4-font-size);
+  --wm-header-link-color: var(--wm-surface-light);
+  --wm-header-link-color-hover: var(--wm-surface-light);
+  --wm-header-link-color-active: var(--wm-surface-light);
+  --wm-header-logo-height: 2.5rem;
+  --wm-header-height: 4.5rem;
+  --wm-header-z-index: 2;
+  --wm-header-shadow: inset 0px 0px 0 0 var(--wm-color-secondary);
+  --wm-header-padding: 0;
+  --wm-header-leftnav-toggle-width: 50px;
+  /*--app top nav--*/
+  --wm-top-nav-box-shadow: none;
+  --wm-top-nav-z-index: 3;
+  /*--app side panel--*/
+  --wm-aside-panel-width: 262px;
+  --wm-aside-panel-link-height: 38px;
+  --wm-aside-panel-collapsible-width: 0px;
+  --wm-aside-separator-color: var(--wm-color-light-grey-500);
+  --wm-aside-panel-shadow: none;
+  --wm-aside-panel-bg-color: var(--wm-color-contrast-light);
+  --wm-aside-panel-text-color: var(--wm-text-color);
+  --wm-aside-panel-link-spacing: var(--wm-space-2) var(--wm-space-3);
+  --wm-aside-panel-link-color: var(--wm-text-color);
+  --wm-aside-panel-link-hover-color: var(--wm-color-primary-60);
+  --wm-aside-panel-link-active-color: var(--wm-color-primary);
+  --wm-aside-panel-link-bg-color: var(--wm-color-contrast-light);
+  --wm-aside-panel-link-hover-bg-color: var(--wm-color-contrast-light);
+  --wm-aside-panel-link-active-bg-color: var(--wm-color-primary-10);
+  --wm-aside-panel-link-font-size: var(--wm-font-size-base);
+  --wm-aside-panel-link-icon-size: var(--wm-icon-size-sm);
+  --wm-aside-panel-link-icon-color: var(--wm-text-color);
+  --wm-aside-panel-link-icon-hover-color: var(--wm-color-primary-60);
+  --wm-aside-panel-link-icon-active-color: var(--wm-color-primary);
+  --wm-aside-panel-link-indicator-active-color: transparent;
+  /*--app page content--*/
+  --wm-page-bg-color: var(--wm-color-contrast-light);
+  --wm-page-text-color: var(--wm-color-contrast-dark);
+  --wm-page-text-muted-color: var(--wm-color-dark-grey-500);
+  /*--app footer--*/
+  --wm-footer-spacing: 3.5rem 2.5rem;
+  --wm-footer-bg: #f2f4f7;
+  --wm-footer-text-color: #161c2d;
+  --wm-footer-text-muted-color: #878f9d;
+  --wm-footer-height: 80px;
+  --wm-footer-separator-color: transparent;
+  /**--Components--**/
+  /*--form filed--*/
+  --wm-caption-size: 12px;
+  --wm-caption-color: var(--wm-color-on-surface-variant);
+  --wm-caption-weight: var(--wm-font-weight-regular);
+  --wm-caption-offset: 0;
+  --wm-caption-inset: 0;
+  --wm-input-color: var(--wm-color-on-surface);
+  --wm-input-bg: var(--wm-color-surface-container-lowest);
+  --wm-input-border-color: var(--wm-color-outline);
+  --wm-input-radius: 4px;
+  --wm-input-height: 56px;
+  --wm-input-padding: 16px;
+  --wm-input-text-size: 1rem;
+  --wm-input-place-holder: var(--wm-text-muted-color);
+  /*--button--*/
+  --wm-btn-font-size: var(--wm-h4-font-size);
+  --wm-btn-font-family: var(--wm-font-family);
+  --wm-btn-font-weight: var(--wm-font-weight-semibold);
+  --wm-btn-shadow: none;
+  --wm-btn-height-base: 40px;
+  --wm-btn-height-xs: 26px;
+  --wm-btn-height-sm: 32px;
+  --wm-btn-height-lg: 44px;
+  --wm-btn-min-width: auto;
+  --wm-btn-text-color: var(--wm-text-color);
+  --wm-btn-bg: var(--wm-color-surface-container);
+  --wm-btn-border-color: var(--wm-color-surface-container-highest);
+  --wm-btn-space: var(--wm-space-2) var(--wm-space-8);
+  --wm-btn-radius-base: var(--wm-space-1);
+  --wm-btn-state-layer-color: transparent;
+  --wm-btn-hover-state-layer-opacity: 0.04;
+  --wm-btn-pressed-state-layer-opacity: 0.12;
+  --wm-btn-contrast-light: #ffffff;
+  --wm-btn-contrast-dark: rgba(0, 0, 0, 0.87);
+  --wm-btn-raised-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  --wm-btn-raised-hover-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  --wm-btn-raised-active-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  /*--app grid (or) Data Table --*/
+  --wm-app-grid-bg: var(--wm-color-contrast-light);
+  --wm-app-grid-radius: 8px;
+  --wm-app-grid-spacing: var(--wm-space-4);
+  --wm-app-grid-table-bg-color: var(--wm-color-contrast-light);
+  --wm-app-grid-table-radius: 0;
+  --wm-app-grid-header-bg: var(--wm-color-primary-10);
+  --wm-app-grid-header-text-color: var(--wm-text-color);
+  --wm-app-grid-header-radius: 0;
+  --wm-app-grid-separator: var(--wm-color-mid-grey-100);
+  --wm-app-grid-text-color: var(--wm-text-color);
+  /*--pagination--*/
+  --wm-pagination-color: var(--wm-text-muted-color);
+  --wm-pagination-basic-bg: var(--wm-color-contrast-light);
+  --wm-pagination-hover-text: var(--wm-text-color);
+  --wm-pagination-hover-bg: var(--wm-color-primary-10);
+  --wm-pagination-active-text: var(--wm-color-contrast-light);
+  --wm-pagination-active-bg: var(--wm-color-primary);
+  --wm-pagination-disabled-text: var(--wm-text-muted-color);
+  --wm-pagination-disabled-bg: var(--wm-color-light-grey-300);
+  --wm-card-bg: var(--wm-surface-light);
+  --wm-card-border-color: var(--wm-border-color);
+  --wm-card-shadow: 0px 3px 4px 0px var(--wm-border-color);
+}
+/**--import specified google font url ex:Lexend--**/
+/*START - Re-write selectors with css variables with Flat Line Theme*/
+.wm-app {
+  /** Editing the above @import lines are restricted. It will break the CSS. */
+  /**  You can edit the styles from here. Note* Last entered code overrides your styles.*/
+  font-size: var(--wm-font-size-base);
+  line-height: var(--wm-line-height);
+  background-color: var(--wm-body-bg);
+  color: var(--wm-text-color);
+  font-family: var(--wm-font-family), var(--wm-font-family-backup);
+  font-weight: var(--wm-body-font-weight);
+  text-transform: var(--wm-body-text-transform);
+  -webkit-font-smoothing: antialiased;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  /** Reuasble style selectors with arguments */
+  /**----base tag styles----**/
+  /** Layout styles */
+  /**--component/widgets styles--**/
+  /**--Basic--**/
+  /**--Data Entry--**/
+  /**--Layout--**/
+  /**--Panel styles--**/
+  /* width */
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+  /**--Utility classes--**/
+}
+.wm-app * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+.wm-app h1,
+.wm-app .h1,
+.wm-app h2,
+.wm-app .h2,
+.wm-app h3,
+.wm-app .h3,
+.wm-app h4,
+.wm-app .h4,
+.wm-app h5,
+.wm-app .h5,
+.wm-app h6,
+.wm-app .h6 {
+  margin: 0;
+  font-family: var(--wm-heading-font-family);
+  font-weight: var(--wm-font-weight-medium);
+  line-height: normal;
+  color: var(--wm-heading-text-color);
+  width: 100%;
+  display: block;
+}
+.wm-app p {
+  margin: 0;
+  width: 100%;
+  display: block;
+}
+.wm-app .h1,
+.wm-app h1 {
+  font-size: var(--wm-h1-font-size);
+}
+.wm-app .h2,
+.wm-app h2 {
+  font-size: var(--wm-h2-font-size);
+}
+.wm-app .h3,
+.wm-app h3 {
+  font-size: var(--wm-h3-font-size);
+}
+.wm-app .h4,
+.wm-app h4 {
+  font-size: var(--wm-h4-font-size);
+}
+.wm-app .h5,
+.wm-app h5 {
+  font-size: var(--wm-h5-font-size);
+}
+.wm-app .h6,
+.wm-app h6 {
+  font-size: var(--wm-h6-font-size);
+}
+.wm-app .app-page {
+  display: flex;
+  flex-direction: column;
+}
+.wm-app .app-header,
+.wm-app .app-mobile-header {
+  width: 100%;
+  background: var(--wm-header-bg-color);
+  color: var(--wm-header-text-color);
+  min-height: var(--wm-header-height);
+  z-index: var(--wm-header-z-index);
+  box-shadow: var(--wm-header-shadow);
+  padding: var(--wm-header-padding);
+  /****nav item styles ***/
+}
+.wm-app .app-header .app-header-container,
+.wm-app .app-mobile-header .app-header-container {
+  height: 100%;
+  position: relative;
+  max-width: var(--wm-page-max-width);
+  margin: var(--wm-space-0) auto;
+  padding: var(--wm-space-0) var(--wm-space-10);
+}
+.wm-app .app-header .app-logo,
+.wm-app .app-mobile-header .app-logo {
+  height: var(--wm-header-logo-height);
+  margin: var(--wm-space-0);
+}
+.wm-app .app-header .header-app-name,
+.wm-app .app-mobile-header .header-app-name {
+  font-size: var(--wm-header-app-name-font-size);
+}
+.wm-app .app-header .nav,
+.wm-app .app-mobile-header .nav {
+  display: inline-flex;
+  align-items: center;
+}
+.wm-app .app-header .nav > li + li,
+.wm-app .app-mobile-header .nav > li + li {
+  margin-left: var(--wm-space-12);
+}
+.wm-app .app-header .nav > li a,
+.wm-app .app-mobile-header .nav > li a {
+  color: var(--wm-header-link-color);
+  margin: var(--wm-space-0);
+  padding: var(--wm-space-0);
+  font-size: var(--wm-header-link-size);
+}
+.wm-app .app-header .nav > li a i,
+.wm-app .app-mobile-header .nav > li a i {
+  line-height: normal;
+}
+.wm-app .app-header .nav > li a:focus,
+.wm-app .app-mobile-header .nav > li a:focus,
+.wm-app .app-header .nav > li a:hover,
+.wm-app .app-mobile-header .nav > li a:hover {
+  color: var(--wm-header-link-color-hover);
+  background-color: transparent;
+}
+.wm-app .app-header .nav > li a.active,
+.wm-app .app-mobile-header .nav > li a.active {
+  font-weight: var(--wm-font-weight-semibold);
+}
+.wm-app .app-header .nav > li .profile a,
+.wm-app .app-mobile-header .nav > li .profile a {
+  padding: 0 2em 0 1.5em;
+  margin: .9em 0;
+  border-radius: 0;
+}
+.wm-app .app-header .nav > li .profile a img,
+.wm-app .app-mobile-header .nav > li .profile a img {
+  border-radius: 50%;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.2);
+}
+.wm-app .app-header .nav > li .profile a::before,
+.wm-app .app-mobile-header .nav > li .profile a::before {
+  content: '';
+  height: 70%;
+  width: 1px;
+  background-color: var(--wm-separator-color);
+  position: absolute;
+  left: 0;
+  margin: .5em 0;
+}
+.wm-app .app-header .app-grid-layout,
+.wm-app .app-mobile-header .app-grid-layout {
+  height: 100%;
+}
+.wm-app .app-header .app-grid-layout > .app-grid-row,
+.wm-app .app-mobile-header .app-grid-layout > .app-grid-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+}
+.wm-app .app-header .app-grid-layout > .app-grid-row > .app-grid-column,
+.wm-app .app-mobile-header .app-grid-layout > .app-grid-row > .app-grid-column {
+  height: 100%;
+  padding: var(--wm-space-2);
+  display: inline-flex;
+  align-items: center;
+}
+.wm-app .app-header .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a,
+.wm-app .app-mobile-header .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a,
+.wm-app .app-header .app-nav.nav-pills .app-nav-item.active a,
+.wm-app .app-mobile-header .app-nav.nav-pills .app-nav-item.active a,
+.wm-app .app-header .app-nav.nav-pills .app-nav-item.active a:focus,
+.wm-app .app-mobile-header .app-nav.nav-pills .app-nav-item.active a:focus {
+  color: var(--wm-color-primary);
+  background: transparent;
+}
+.wm-app .app-header .app-nav.nav-tabs,
+.wm-app .app-mobile-header .app-nav.nav-tabs {
+  border-bottom-color: transparent;
+  background-color: transparent;
+}
+.wm-app .app-header.expand .app-header-menu,
+.wm-app .app-mobile-header.expand .app-header-menu {
+  vertical-align: middle;
+  padding: 0 2em;
+  display: table-cell;
+  cursor: pointer;
+}
+.wm-app .app-header.expand .app-header-menu .app-header-action,
+.wm-app .app-mobile-header.expand .app-header-menu .app-header-action {
+  font-size: 18pt;
+  display: block;
+}
+.wm-app .app-header.expand .app-header-menu + .app-header-container,
+.wm-app .app-mobile-header.expand .app-header-menu + .app-header-container {
+  display: table-cell;
+  width: 100%;
+}
+.wm-app .app-header .app-search .form-control,
+.wm-app .app-mobile-header .app-search .form-control {
+  --input-bg: rgba(242, 244, 247, 0.1);
+  border-color: rgba(242, 244, 247, 0.01);
+  color: #ffffff;
+  border-radius: 500px !important;
+}
+.wm-app .app-header .app-search .form-control::-moz-placeholder,
+.wm-app .app-mobile-header .app-search .form-control::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 1;
+}
+.wm-app .app-header .app-search .form-control::-ms-input-placeholder,
+.wm-app .app-mobile-header .app-search .form-control::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+.wm-app .app-header .app-search .form-control::-webkit-input-placeholder,
+.wm-app .app-mobile-header .app-search .form-control::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+.wm-app .app-header .input-group-addon,
+.wm-app .app-mobile-header .input-group-addon {
+  color: var(--wm-heading-text-color);
+}
+.wm-app .app-header + .app-content,
+.wm-app .app-mobile-header + .app-content {
+  height: 100%;
+}
+.wm-app .app-top-nav {
+  width: 100%;
+  z-index: var(--wm-top-nav-z-index);
+  box-shadow: var(--wm-top-nav-box-shadow);
+}
+.wm-app .app-navbar {
+  border-radius: 0;
+  z-index: 1;
+  border: none;
+}
+.wm-app .app-navbar .navbar-nav.navbar-left .btn {
+  padding: 0 20px;
+}
+.wm-app .app-navbar .navbar-nav li a,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a {
+  font-size: 1em;
+  padding: 1.3em 0;
+  margin: 0 1.5em;
+  text-decoration: none;
+  box-shadow: inset 0px -2px 0 0px transparent;
+}
+.wm-app .app-navbar .navbar-nav li a:hover,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a:hover,
+.wm-app .app-navbar .navbar-nav li a:focus,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a:focus,
+.wm-app .app-navbar .navbar-nav li a.active,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a.active {
+  -webkit-transition: color .3s ease;
+  -o-transition: color .3s ease;
+  transition: color .3s ease;
+}
+.wm-app .app-navbar .navbar-nav li a.active,
+.wm-app .app-navbar .navbar-nav li .app-popover-wrapper a.active {
+  box-shadow: inset 0px -3px 0 0px var(--wm-color-primary);
+}
+.wm-app .app-navbar .navbar-nav li:last-child a::before {
+  content: none;
+}
+.wm-app .app-navbar .navbar-nav li > .dropdown .dropdown-menu {
+  margin: 0;
+}
+.wm-app .app-navbar .navbar-nav li > .dropdown .dropdown-menu a {
+  color: var(--wm-text-color);
+  padding: 1em;
+  font-size: 1em;
+  text-transform: var(--wm-body-text-transform);
+}
+.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a.dropdown-toggle,
+.wm-app .app-navbar .navbar-nav .app-nav-item .app-popover-wrapper a.dropdown-toggle,
+.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown a,
+.wm-app .app-navbar .navbar-nav .app-nav-item .app-popover-wrapper a {
+  padding: 1.2em;
+}
+.wm-app .app-navbar .navbar-nav .app-nav-item > .dropdown .dropdown-menu li > a:hover,
+.wm-app .app-navbar .navbar-nav .app-nav-item .app-popover-wrapper .dropdown-menu li > a:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.wm-app .app-left-panel,
+.wm-app .app-right-panel {
+  box-shadow: var(--wm-aside-panel-shadow);
+  -webkit-box-shadow: var(--wm-aside-panel-shadow);
+  -moz-box-shadow: var(--wm-aside-panel-shadow);
+  background: var(--wm-aside-panel-bg-color);
+  height: auto;
+  z-index: 1;
+  opacity: 1;
+}
+.wm-app .app-left-panel .text-muted,
+.wm-app .app-right-panel .text-muted {
+  --wm-text-muted-color: var(--wm-color-light-grey-500);
+}
+.wm-app .app-left-panel .nav li,
+.wm-app .app-right-panel .nav li,
+.wm-app .app-left-panel .app-nav.nav-pills li,
+.wm-app .app-right-panel .app-nav.nav-pills li,
+.wm-app .app-left-panel .nav .app-nav-item,
+.wm-app .app-right-panel .nav .app-nav-item,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item {
+  border: 1px solid var(--wm-aside-separator-color);
+  border-width: 1px 0;
+  margin-top: -1px;
+}
+.wm-app .app-left-panel .nav li.active > a,
+.wm-app .app-right-panel .nav li.active > a,
+.wm-app .app-left-panel .app-nav.nav-pills li.active > a,
+.wm-app .app-right-panel .app-nav.nav-pills li.active > a,
+.wm-app .app-left-panel .nav .app-nav-item.active > a,
+.wm-app .app-right-panel .nav .app-nav-item.active > a,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active > a,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active > a,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-popover-wrapper a,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-popover-wrapper a,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-popover-wrapper a,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-popover-wrapper a,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a,
+.wm-app .app-left-panel .nav li.active .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .nav li.active .app-menu .dropdown-toggle,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-menu .dropdown-toggle,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle {
+  color: var(--wm-aside-panel-link-active-color);
+  background: var(--wm-aside-panel-link-active-bg-color);
+}
+.wm-app .app-left-panel .nav li.active > a:hover,
+.wm-app .app-right-panel .nav li.active > a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li.active > a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li.active > a:hover,
+.wm-app .app-left-panel .nav .app-nav-item.active > a:hover,
+.wm-app .app-right-panel .nav .app-nav-item.active > a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active > a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active > a:hover,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .nav li.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .nav li.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .nav li.active > a:focus,
+.wm-app .app-right-panel .nav li.active > a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li.active > a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li.active > a:focus,
+.wm-app .app-left-panel .nav .app-nav-item.active > a:focus,
+.wm-app .app-right-panel .nav .app-nav-item.active > a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active > a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active > a:focus,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-popover-wrapper a:focus,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-popover-wrapper a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a:focus,
+.wm-app .app-left-panel .nav li.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .nav li.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .nav li.active > a:active,
+.wm-app .app-right-panel .nav li.active > a:active,
+.wm-app .app-left-panel .app-nav.nav-pills li.active > a:active,
+.wm-app .app-right-panel .app-nav.nav-pills li.active > a:active,
+.wm-app .app-left-panel .nav .app-nav-item.active > a:active,
+.wm-app .app-right-panel .nav .app-nav-item.active > a:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active > a:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active > a:active,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a:active,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a:active,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-popover-wrapper a:active,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-popover-wrapper a:active,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-popover-wrapper a:active,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-popover-wrapper a:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a:active,
+.wm-app .app-left-panel .nav li.active .app-menu .dropdown-toggle:active,
+.wm-app .app-right-panel .nav li.active .app-menu .dropdown-toggle:active,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle:active,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle:active,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-menu .dropdown-toggle:active,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-menu .dropdown-toggle:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle:active {
+  color: var(--wm-aside-panel-link-active-color);
+  opacity: 1;
+}
+.wm-app .app-left-panel .nav li.active > a::after,
+.wm-app .app-right-panel .nav li.active > a::after,
+.wm-app .app-left-panel .app-nav.nav-pills li.active > a::after,
+.wm-app .app-right-panel .app-nav.nav-pills li.active > a::after,
+.wm-app .app-left-panel .nav .app-nav-item.active > a::after,
+.wm-app .app-right-panel .nav .app-nav-item.active > a::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active > a::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active > a::after,
+.wm-app .app-left-panel .nav li.active .app-popover-wrapper a::after,
+.wm-app .app-right-panel .nav li.active .app-popover-wrapper a::after,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-popover-wrapper a::after,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-popover-wrapper a::after,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-popover-wrapper a::after,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-popover-wrapper a::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-popover-wrapper a::after,
+.wm-app .app-left-panel .nav li.active .app-menu .dropdown-toggle::after,
+.wm-app .app-right-panel .nav li.active .app-menu .dropdown-toggle::after,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle::after,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-menu .dropdown-toggle::after,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-menu .dropdown-toggle::after,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-menu .dropdown-toggle::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-menu .dropdown-toggle::after {
+  content: '';
+  background: var(--wm-aside-panel-link-indicator-active-color);
+  height: 100%;
+  width: 3px;
+  position: absolute;
+  right: -1px;
+  top: 0;
+}
+.wm-app .app-left-panel .nav li.active .app-menu.open .dropdown-toggle,
+.wm-app .app-right-panel .nav li.active .app-menu.open .dropdown-toggle,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-menu.open .dropdown-toggle,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-menu.open .dropdown-toggle,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-menu.open .dropdown-toggle,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-menu.open .dropdown-toggle,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-menu.open .dropdown-toggle,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-menu.open .dropdown-toggle {
+  background-color: transparent;
+  color: inherit;
+  border-right: 0;
+}
+.wm-app .app-left-panel .nav li.active .app-menu:hover,
+.wm-app .app-right-panel .nav li.active .app-menu:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li.active .app-menu:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li.active .app-menu:hover,
+.wm-app .app-left-panel .nav .app-nav-item.active .app-menu:hover,
+.wm-app .app-right-panel .nav .app-nav-item.active .app-menu:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item.active .app-menu:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item.active .app-menu:hover {
+  color: var(--wm-text-color);
+}
+.wm-app .app-left-panel .nav li a,
+.wm-app .app-right-panel .nav li a,
+.wm-app .app-left-panel .app-nav.nav-pills li a,
+.wm-app .app-right-panel .app-nav.nav-pills li a,
+.wm-app .app-left-panel .nav .app-nav-item a,
+.wm-app .app-right-panel .nav .app-nav-item a,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a,
+.wm-app .app-left-panel .nav li .btn,
+.wm-app .app-right-panel .nav li .btn,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn,
+.wm-app .app-left-panel .nav .app-nav-item .btn,
+.wm-app .app-right-panel .nav .app-nav-item .btn,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn,
+.wm-app .app-left-panel .nav li .dropdown a,
+.wm-app .app-right-panel .nav li .dropdown a,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a {
+  padding: var(--wm-aside-panel-link-spacing);
+  margin: 0;
+  position: relative;
+  width: 100%;
+  color: var(--wm-aside-panel-link-color);
+  min-height: var(--wm-aside-panel-link-height);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  text-shadow: none;
+  text-align: left;
+  font-weight: var(--wm-font-weight-regular);
+  font-size: var(--wm-aside-panel-link-font-size);
+  line-height: 1.2;
+  border: none;
+  border-radius: 0;
+}
+.wm-app .app-left-panel .nav li a .app-icon,
+.wm-app .app-right-panel .nav li a .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li a .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li a .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item a .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item a .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a .app-icon,
+.wm-app .app-left-panel .nav li .btn .app-icon,
+.wm-app .app-right-panel .nav li .btn .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .btn .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .btn .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn .app-icon,
+.wm-app .app-left-panel .nav li .dropdown a .app-icon,
+.wm-app .app-right-panel .nav li .dropdown a .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a .app-icon,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .app-icon,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a .app-icon,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .app-icon {
+  margin: 0 var(--wm-space-2) 0 0;
+  padding: 0;
+  font-size: var(--wm-aside-panel-link-icon-size);
+  min-width: calc(var(--wm-aside-panel-link-icon-size) + 6px);
+  height: calc(var(--wm-aside-panel-link-icon-size) + 6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wm-aside-panel-link-icon-color);
+}
+.wm-app .app-left-panel .nav li a .badge,
+.wm-app .app-right-panel .nav li a .badge,
+.wm-app .app-left-panel .app-nav.nav-pills li a .badge,
+.wm-app .app-right-panel .app-nav.nav-pills li a .badge,
+.wm-app .app-left-panel .nav .app-nav-item a .badge,
+.wm-app .app-right-panel .nav .app-nav-item a .badge,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a .badge,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a .badge,
+.wm-app .app-left-panel .nav li .btn .badge,
+.wm-app .app-right-panel .nav li .btn .badge,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn .badge,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn .badge,
+.wm-app .app-left-panel .nav .app-nav-item .btn .badge,
+.wm-app .app-right-panel .nav .app-nav-item .btn .badge,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn .badge,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn .badge,
+.wm-app .app-left-panel .nav li .dropdown a .badge,
+.wm-app .app-right-panel .nav li .dropdown a .badge,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a .badge,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a .badge,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a .badge,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a .badge,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a .badge,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a .badge,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle .badge,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle .badge,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .badge,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .badge,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle .badge,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle .badge,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .badge,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .badge,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a .badge,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a .badge,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a .badge,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a .badge,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a .badge,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a .badge,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .badge,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .badge {
+  top: 1.2em !important;
+  padding: 4px 6px;
+}
+.wm-app .app-left-panel .nav li a .anchor-caption,
+.wm-app .app-right-panel .nav li a .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li a .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li a .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item a .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item a .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a .anchor-caption,
+.wm-app .app-left-panel .nav li .btn .anchor-caption,
+.wm-app .app-right-panel .nav li .btn .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .btn .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .btn .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn .anchor-caption,
+.wm-app .app-left-panel .nav li .dropdown a .anchor-caption,
+.wm-app .app-right-panel .nav li .dropdown a .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a .anchor-caption,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .anchor-caption,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a .anchor-caption,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .anchor-caption {
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: keep-all;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  line-height: inherit;
+}
+.wm-app .app-left-panel .nav li a .caret,
+.wm-app .app-right-panel .nav li a .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li a .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li a .caret,
+.wm-app .app-left-panel .nav .app-nav-item a .caret,
+.wm-app .app-right-panel .nav .app-nav-item a .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a .caret,
+.wm-app .app-left-panel .nav li .btn .caret,
+.wm-app .app-right-panel .nav li .btn .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn .caret,
+.wm-app .app-left-panel .nav .app-nav-item .btn .caret,
+.wm-app .app-right-panel .nav .app-nav-item .btn .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn .caret,
+.wm-app .app-left-panel .nav li .dropdown a .caret,
+.wm-app .app-right-panel .nav li .dropdown a .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a .caret,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a .caret,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a .caret,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle .caret,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .caret,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a .caret,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .caret {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.25em;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--wm-aside-panel-link-color) !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  background: transparent;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+.wm-app .app-left-panel .nav li a .caret::before,
+.wm-app .app-right-panel .nav li a .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills li a .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills li a .caret::before,
+.wm-app .app-left-panel .nav .app-nav-item a .caret::before,
+.wm-app .app-right-panel .nav .app-nav-item a .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a .caret::before,
+.wm-app .app-left-panel .nav li .btn .caret::before,
+.wm-app .app-right-panel .nav li .btn .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn .caret::before,
+.wm-app .app-left-panel .nav .app-nav-item .btn .caret::before,
+.wm-app .app-right-panel .nav .app-nav-item .btn .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn .caret::before,
+.wm-app .app-left-panel .nav li .dropdown a .caret::before,
+.wm-app .app-right-panel .nav li .dropdown a .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a .caret::before,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a .caret::before,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a .caret::before,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle .caret::before,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a .caret::before,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a .caret::before,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a .caret::before,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a .caret::before,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .caret::before,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a .caret::before {
+  content: '';
+}
+.wm-app .app-left-panel .nav li a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav li a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav li .btn[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav li .btn[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .btn[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .btn[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav li .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav li .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a[iconclass=''] .anchor-caption,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a[iconclass=''] .anchor-caption,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a[iconclass=''] .anchor-caption {
+  padding-left: calc(var(--wm-aside-panel-link-icon-size) + 6px + 3px);
+}
+.wm-app .app-left-panel .nav li a:hover,
+.wm-app .app-right-panel .nav li a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li a:hover,
+.wm-app .app-left-panel .nav .app-nav-item a:hover,
+.wm-app .app-right-panel .nav .app-nav-item a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a:hover,
+.wm-app .app-left-panel .nav li .btn:hover,
+.wm-app .app-right-panel .nav li .btn:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn:hover,
+.wm-app .app-left-panel .nav .app-nav-item .btn:hover,
+.wm-app .app-right-panel .nav .app-nav-item .btn:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn:hover,
+.wm-app .app-left-panel .nav li .dropdown a:hover,
+.wm-app .app-right-panel .nav li .dropdown a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a:hover,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a:hover,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a:hover,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:hover,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:hover,
+.wm-app .app-left-panel .nav li a:focus,
+.wm-app .app-right-panel .nav li a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li a:focus,
+.wm-app .app-left-panel .nav .app-nav-item a:focus,
+.wm-app .app-right-panel .nav .app-nav-item a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a:focus,
+.wm-app .app-left-panel .nav li .btn:focus,
+.wm-app .app-right-panel .nav li .btn:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn:focus,
+.wm-app .app-left-panel .nav .app-nav-item .btn:focus,
+.wm-app .app-right-panel .nav .app-nav-item .btn:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn:focus,
+.wm-app .app-left-panel .nav li .dropdown a:focus,
+.wm-app .app-right-panel .nav li .dropdown a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a:focus,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a:focus,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a:focus,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:focus,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a:focus,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:focus {
+  color: var(--wm-aside-panel-link-hover-color);
+  opacity: 1;
+  text-decoration: none;
+  background-color: var(--wm-aside-panel-link-hover-bg-color);
+}
+.wm-app .app-left-panel .nav li a:hover .app-icon,
+.wm-app .app-right-panel .nav li a:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li a:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li a:hover .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item a:hover .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item a:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a:hover .app-icon,
+.wm-app .app-left-panel .nav li .btn:hover .app-icon,
+.wm-app .app-right-panel .nav li .btn:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn:hover .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .btn:hover .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .btn:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn:hover .app-icon,
+.wm-app .app-left-panel .nav li .dropdown a:hover .app-icon,
+.wm-app .app-right-panel .nav li .dropdown a:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a:hover .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a:hover .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a:hover .app-icon,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:hover .app-icon,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:hover .app-icon,
+.wm-app .app-left-panel .nav li a:focus .app-icon,
+.wm-app .app-right-panel .nav li a:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li a:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li a:focus .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item a:focus .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item a:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a:focus .app-icon,
+.wm-app .app-left-panel .nav li .btn:focus .app-icon,
+.wm-app .app-right-panel .nav li .btn:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn:focus .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .btn:focus .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .btn:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn:focus .app-icon,
+.wm-app .app-left-panel .nav li .dropdown a:focus .app-icon,
+.wm-app .app-right-panel .nav li .dropdown a:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a:focus .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a:focus .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a:focus .app-icon,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:focus .app-icon,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a:focus .app-icon,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a:focus .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a:focus .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a:focus .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:focus .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:focus .app-icon {
+  color: var(--wm-aside-panel-link-icon-hover-color);
+}
+.wm-app .app-left-panel .nav li a:hover .caret,
+.wm-app .app-right-panel .nav li a:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li a:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li a:hover .caret,
+.wm-app .app-left-panel .nav .app-nav-item a:hover .caret,
+.wm-app .app-right-panel .nav .app-nav-item a:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a:hover .caret,
+.wm-app .app-left-panel .nav li .btn:hover .caret,
+.wm-app .app-right-panel .nav li .btn:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn:hover .caret,
+.wm-app .app-left-panel .nav .app-nav-item .btn:hover .caret,
+.wm-app .app-right-panel .nav .app-nav-item .btn:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn:hover .caret,
+.wm-app .app-left-panel .nav li .dropdown a:hover .caret,
+.wm-app .app-right-panel .nav li .dropdown a:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a:hover .caret,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a:hover .caret,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a:hover .caret,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:hover .caret,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a:hover .caret,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a:hover .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a:hover .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a:hover .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:hover .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:hover .caret,
+.wm-app .app-left-panel .nav li a:focus .caret,
+.wm-app .app-right-panel .nav li a:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li a:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li a:focus .caret,
+.wm-app .app-left-panel .nav .app-nav-item a:focus .caret,
+.wm-app .app-right-panel .nav .app-nav-item a:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a:focus .caret,
+.wm-app .app-left-panel .nav li .btn:focus .caret,
+.wm-app .app-right-panel .nav li .btn:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn:focus .caret,
+.wm-app .app-left-panel .nav .app-nav-item .btn:focus .caret,
+.wm-app .app-right-panel .nav .app-nav-item .btn:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn:focus .caret,
+.wm-app .app-left-panel .nav li .dropdown a:focus .caret,
+.wm-app .app-right-panel .nav li .dropdown a:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a:focus .caret,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a:focus .caret,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a:focus .caret,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle:focus .caret,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a:focus .caret,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a:focus .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a:focus .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a:focus .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:focus .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a:focus .caret {
+  border-color: var(--wm-aside-panel-link-icon-hover-color);
+}
+.wm-app .app-left-panel .nav li a.active,
+.wm-app .app-right-panel .nav li a.active,
+.wm-app .app-left-panel .app-nav.nav-pills li a.active,
+.wm-app .app-right-panel .app-nav.nav-pills li a.active,
+.wm-app .app-left-panel .nav .app-nav-item a.active,
+.wm-app .app-right-panel .nav .app-nav-item a.active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a.active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a.active,
+.wm-app .app-left-panel .nav li .btn.active,
+.wm-app .app-right-panel .nav li .btn.active,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn.active,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn.active,
+.wm-app .app-left-panel .nav .app-nav-item .btn.active,
+.wm-app .app-right-panel .nav .app-nav-item .btn.active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn.active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn.active,
+.wm-app .app-left-panel .nav li .dropdown a.active,
+.wm-app .app-right-panel .nav li .dropdown a.active,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a.active,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a.active,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a.active,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a.active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a.active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a.active,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle.active,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle.active,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle.active,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle.active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a.active,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a.active,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a.active,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a.active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active {
+  color: var(--wm-aside-panel-link-active-color);
+  background: var(--wm-aside-panel-link-active-bg-color);
+  opacity: 1;
+  font-weight: var(--wm-font-weight-bold);
+}
+.wm-app .app-left-panel .nav li a.active:hover,
+.wm-app .app-right-panel .nav li a.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li a.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li a.active:hover,
+.wm-app .app-left-panel .nav .app-nav-item a.active:hover,
+.wm-app .app-right-panel .nav .app-nav-item a.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a.active:hover,
+.wm-app .app-left-panel .nav li .btn.active:hover,
+.wm-app .app-right-panel .nav li .btn.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn.active:hover,
+.wm-app .app-left-panel .nav .app-nav-item .btn.active:hover,
+.wm-app .app-right-panel .nav .app-nav-item .btn.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn.active:hover,
+.wm-app .app-left-panel .nav li .dropdown a.active:hover,
+.wm-app .app-right-panel .nav li .dropdown a.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a.active:hover,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a.active:hover,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a.active:hover,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active:hover,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active:hover,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a.active:hover,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a.active:hover,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a.active:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active:hover,
+.wm-app .app-left-panel .nav li a.active:focus,
+.wm-app .app-right-panel .nav li a.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li a.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li a.active:focus,
+.wm-app .app-left-panel .nav .app-nav-item a.active:focus,
+.wm-app .app-right-panel .nav .app-nav-item a.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a.active:focus,
+.wm-app .app-left-panel .nav li .btn.active:focus,
+.wm-app .app-right-panel .nav li .btn.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn.active:focus,
+.wm-app .app-left-panel .nav .app-nav-item .btn.active:focus,
+.wm-app .app-right-panel .nav .app-nav-item .btn.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn.active:focus,
+.wm-app .app-left-panel .nav li .dropdown a.active:focus,
+.wm-app .app-right-panel .nav li .dropdown a.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a.active:focus,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a.active:focus,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a.active:focus,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active:focus,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active:focus,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a.active:focus,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a.active:focus,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a.active:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active:focus,
+.wm-app .app-left-panel .nav li a.active:active,
+.wm-app .app-right-panel .nav li a.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills li a.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills li a.active:active,
+.wm-app .app-left-panel .nav .app-nav-item a.active:active,
+.wm-app .app-right-panel .nav .app-nav-item a.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a.active:active,
+.wm-app .app-left-panel .nav li .btn.active:active,
+.wm-app .app-right-panel .nav li .btn.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn.active:active,
+.wm-app .app-left-panel .nav .app-nav-item .btn.active:active,
+.wm-app .app-right-panel .nav .app-nav-item .btn.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn.active:active,
+.wm-app .app-left-panel .nav li .dropdown a.active:active,
+.wm-app .app-right-panel .nav li .dropdown a.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a.active:active,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a.active:active,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a.active:active,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle.active:active,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active:active,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle.active:active,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active:active,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active:active,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a.active:active,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a.active:active,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a.active:active,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active:active,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active:active {
+  color: var(--wm-aside-panel-link-active-color);
+  opacity: 1;
+}
+.wm-app .app-left-panel .nav li a.active::after,
+.wm-app .app-right-panel .nav li a.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills li a.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills li a.active::after,
+.wm-app .app-left-panel .nav .app-nav-item a.active::after,
+.wm-app .app-right-panel .nav .app-nav-item a.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a.active::after,
+.wm-app .app-left-panel .nav li .btn.active::after,
+.wm-app .app-right-panel .nav li .btn.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn.active::after,
+.wm-app .app-left-panel .nav .app-nav-item .btn.active::after,
+.wm-app .app-right-panel .nav .app-nav-item .btn.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn.active::after,
+.wm-app .app-left-panel .nav li .dropdown a.active::after,
+.wm-app .app-right-panel .nav li .dropdown a.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a.active::after,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a.active::after,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a.active::after,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle.active::after,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active::after,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle.active::after,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active::after,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active::after,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a.active::after,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a.active::after,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a.active::after,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active::after,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active::after {
+  content: '';
+  background: var(--wm-aside-panel-link-indicator-active-color);
+  height: 100%;
+  width: 3px;
+  position: absolute;
+  right: -1px;
+  top: 0;
+}
+.wm-app .app-left-panel .nav li a.active .app-icon,
+.wm-app .app-right-panel .nav li a.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li a.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li a.active .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item a.active .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item a.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a.active .app-icon,
+.wm-app .app-left-panel .nav li .btn.active .app-icon,
+.wm-app .app-right-panel .nav li .btn.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn.active .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .btn.active .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .btn.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn.active .app-icon,
+.wm-app .app-left-panel .nav li .dropdown a.active .app-icon,
+.wm-app .app-right-panel .nav li .dropdown a.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a.active .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a.active .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a.active .app-icon,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active .app-icon,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active .app-icon,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a.active .app-icon,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a.active .app-icon,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a.active .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active .app-icon {
+  color: var(--wm-aside-panel-link-icon-active-color);
+}
+.wm-app .app-left-panel .nav li a.active .caret,
+.wm-app .app-right-panel .nav li a.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li a.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li a.active .caret,
+.wm-app .app-left-panel .nav .app-nav-item a.active .caret,
+.wm-app .app-right-panel .nav .app-nav-item a.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item a.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item a.active .caret,
+.wm-app .app-left-panel .nav li .btn.active .caret,
+.wm-app .app-right-panel .nav li .btn.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .btn.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .btn.active .caret,
+.wm-app .app-left-panel .nav .app-nav-item .btn.active .caret,
+.wm-app .app-right-panel .nav .app-nav-item .btn.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .btn.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .btn.active .caret,
+.wm-app .app-left-panel .nav li .dropdown a.active .caret,
+.wm-app .app-right-panel .nav li .dropdown a.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .dropdown a.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .dropdown a.active .caret,
+.wm-app .app-left-panel .nav .app-nav-item .dropdown a.active .caret,
+.wm-app .app-right-panel .nav .app-nav-item .dropdown a.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .dropdown a.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .dropdown a.active .caret,
+.wm-app .app-left-panel .nav li .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-right-panel .nav li .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-menu .dropdown-toggle.active .caret,
+.wm-app .app-left-panel .nav li .app-popover-wrapper a.active .caret,
+.wm-app .app-right-panel .nav li .app-popover-wrapper a.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills li .app-popover-wrapper a.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills li .app-popover-wrapper a.active .caret,
+.wm-app .app-left-panel .nav .app-nav-item .app-popover-wrapper a.active .caret,
+.wm-app .app-right-panel .nav .app-nav-item .app-popover-wrapper a.active .caret,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active .caret,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item .app-popover-wrapper a.active .caret {
+  border-color: var(--wm-aside-panel-link-icon-active-color);
+}
+.wm-app .app-left-panel .nav li > .dropdown.open > .dropdown-menu,
+.wm-app .app-right-panel .nav li > .dropdown.open > .dropdown-menu,
+.wm-app .app-left-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu,
+.wm-app .app-right-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu,
+.wm-app .app-left-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu,
+.wm-app .app-right-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu {
+  position: relative;
+  margin: 0 0 1.333em;
+  border: 0;
+}
+.wm-app .app-left-panel .nav li > .dropdown.open > .dropdown-menu li a,
+.wm-app .app-right-panel .nav li > .dropdown.open > .dropdown-menu li a,
+.wm-app .app-left-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li a,
+.wm-app .app-right-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li a,
+.wm-app .app-left-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li a,
+.wm-app .app-right-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li a,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li a,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li a {
+  margin-left: 0;
+  font-size: 1em;
+  padding-left: 2em;
+  opacity: .6;
+}
+.wm-app .app-left-panel .nav li > .dropdown.open > .dropdown-menu li.active a,
+.wm-app .app-right-panel .nav li > .dropdown.open > .dropdown-menu li.active a,
+.wm-app .app-left-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li.active a,
+.wm-app .app-right-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li.active a,
+.wm-app .app-left-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li.active a,
+.wm-app .app-right-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li.active a,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li.active a,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li.active a {
+  opacity: 1;
+}
+.wm-app .app-left-panel .nav li > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-right-panel .nav li > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-left-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-right-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li.active a:hover,
+.wm-app .app-left-panel .nav li > .dropdown.open > .dropdown-menu li.active a:focus,
+.wm-app .app-right-panel .nav li > .dropdown.open > .dropdown-menu li.active a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li.active a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills li > .dropdown.open > .dropdown-menu li.active a:focus,
+.wm-app .app-left-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li.active a:focus,
+.wm-app .app-right-panel .nav .app-nav-item > .dropdown.open > .dropdown-menu li.active a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li.active a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills .app-nav-item > .dropdown.open > .dropdown-menu li.active a:focus {
+  background-color: var(--wm-aside-panel-link-active-bg-color);
+}
+.wm-app .app-left-panel .nav.fab-nav-list,
+.wm-app .app-right-panel .nav.fab-nav-list,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: var(--wm-space-2);
+  border-top: 1px solid var(--wm-aside-separator-color);
+}
+.wm-app .app-left-panel .nav.fab-nav-list li,
+.wm-app .app-right-panel .nav.fab-nav-list li,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li {
+  border: none;
+}
+.wm-app .app-left-panel .nav.fab-nav-list li a,
+.wm-app .app-right-panel .nav.fab-nav-list li a,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li a,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li a {
+  width: 27px;
+  height: 27px;
+  min-height: 27px;
+  margin: var(--wm-space-1) calc(var(--wm-space-1) * 0.75);
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--wm-color-dark-grey-300);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
+}
+.wm-app .app-left-panel .nav.fab-nav-list li a .anchor-caption:empty,
+.wm-app .app-right-panel .nav.fab-nav-list li a .anchor-caption:empty,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li a .anchor-caption:empty,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li a .anchor-caption:empty {
+  display: none;
+}
+.wm-app .app-left-panel .nav.fab-nav-list li a .app-icon,
+.wm-app .app-right-panel .nav.fab-nav-list li a .app-icon,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li a .app-icon,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li a .app-icon {
+  font-size: calc(var(--wm-icon-size-md) - 2px);
+  margin: 0;
+  padding: 0;
+}
+.wm-app .app-left-panel .nav.fab-nav-list li a:hover,
+.wm-app .app-right-panel .nav.fab-nav-list li a:hover,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li a:hover,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li a:hover,
+.wm-app .app-left-panel .nav.fab-nav-list li a:focus,
+.wm-app .app-right-panel .nav.fab-nav-list li a:focus,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li a:focus,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li a:focus,
+.wm-app .app-left-panel .nav.fab-nav-list li a:active,
+.wm-app .app-right-panel .nav.fab-nav-list li a:active,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li a:active,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li a:active {
+  background-color: var(--wm-color-dark-grey-800);
+  box-shadow: inset 0 0 0 1px var(--wm-color-dark-grey-300), 0 1px 1px 0px rgba(0, 0, 0, 0.16);
+}
+.wm-app .app-left-panel .nav.fab-nav-list li a.active,
+.wm-app .app-right-panel .nav.fab-nav-list li a.active,
+.wm-app .app-left-panel .app-nav.nav-pills.fab-nav-list li a.active,
+.wm-app .app-right-panel .app-nav.nav-pills.fab-nav-list li a.active {
+  color: var(--wm-color-contrast-dark);
+  background-color: var(--wm-color-secondary);
+  box-shadow: inset 0 0 0 1px var(--wm-color-secondary), 0 1px 1px 0px rgba(0, 0, 0, 0.16);
+}
+.wm-app .app-left-panel .app-search,
+.wm-app .app-right-panel .app-search {
+  margin: var(--wm-space-2) 0;
+  padding: 0 var(--wm-space-2);
+}
+.wm-app .app-left-panel .app-search .form-control,
+.wm-app .app-right-panel .app-search .form-control {
+  height: calc(var(--wm-input-height-small) - 2px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 20px !important;
+  border: none;
+  color: var(--wm-aside-panel-text-color);
+}
+.wm-app .app-left-panel .app-search .form-control::-moz-placeholder,
+.wm-app .app-right-panel .app-search .form-control::-moz-placeholder {
+  color: #EAEAEA;
+  opacity: 1;
+}
+.wm-app .app-left-panel .app-search .form-control::-ms-input-placeholder,
+.wm-app .app-right-panel .app-search .form-control::-ms-input-placeholder {
+  color: #EAEAEA;
+}
+.wm-app .app-left-panel .app-search .form-control::-webkit-input-placeholder,
+.wm-app .app-right-panel .app-search .form-control::-webkit-input-placeholder {
+  color: #EAEAEA;
+}
+.wm-app .app-left-panel .app-search .input-group-addon,
+.wm-app .app-right-panel .app-search .input-group-addon {
+  padding: .2em 1em;
+  color: #EAEAEA;
+}
+.wm-app .app-content {
+  height: 100%;
+}
+.wm-app .app-content .app-content-row {
+  display: flex;
+  flex-direction: row;
+}
+.wm-app .app-content .app-content-row .app-content-column {
+  width: 100%;
+  height: auto;
+  background: var(--wm-body-bg);
+  padding: var(--wm-space-3) var(--wm-space-0);
+  color: var(--wm-text-color);
+}
+.wm-app .app-content .app-content-row .app-content-column.app-page-content {
+  display: flex;
+  flex-direction: column;
+}
+.wm-app .app-content .app-content-row .app-content-column.app-page-content .app-page-filter {
+  min-height: 49px;
+  padding: var(--wm-space-2) var(--wm-space-5);
+}
+.wm-app .app-content .app-content-row .app-content-column.app-page-content .app-page-filter-data {
+  background-color: var(--wm-page-bg-color);
+  color: var(--wm-page-text-color);
+  padding: var(--wm-space-3) var(--wm-space-5);
+  height: 100%;
+  border-top-right-radius: var(--wm-space-4);
+}
+.wm-app .app-content .app-content-row .app-content-column.app-page-content .app-page-filter-data .text-muted {
+  --wm-text-muted-color: var(--wm-page-text-muted-color);
+}
+.wm-app .section-wrapper {
+  width: 100%;
+}
+.wm-app .section-content {
+  max-width: var(--wm-page-max-width);
+  margin: var(--wm-space-0) auto;
+  padding: var(--wm-space-4) var(--wm-space-10);
+}
+.wm-app .app-footer {
+  padding: 0;
+  background: var(--wm-footer-bg);
+  color: var(--wm-footer-text-color);
+  box-shadow: 0 -1px 0 0 var(--wm-footer-separator-color);
+  width: 100%;
+  --wm-text-muted-color: var(--wm-footer-text-muted-color);
+}
+.wm-app .app-footer > * {
+  max-width: var(--wm-page-max-width);
+  margin: 0 auto;
+  padding: var(--wm-footer-spacing);
+}
+.wm-app .app-footer .app-nav.nav-pills li a {
+  padding: var(--wm-space-0);
+  color: var(--wm-footer-anchor-color);
+  font-weight: var(--wm-font-weight-medium);
+}
+.wm-app .app-footer .app-nav.nav-pills li + li {
+  margin-left: var(--wm-space-8);
+}
+.wm-app label,
+.wm-app .app-label {
+  margin: 0;
+  line-height: normal;
+}
+.wm-app p.app-label {
+  margin: 0;
+}
+.wm-app .btn {
+  font-size: var(--wm-btn-font-size);
+  font-family: var(--wm-btn-font-family);
+  text-transform: none;
+  font-weight: var(--wm-btn-font-weight);
+  color: var(--wm-btn-text-color);
+  background: var(--wm-btn-bg);
+  border: 1px solid var(--wm-btn-border-color);
+  box-shadow: var(--wm-btn-shadow);
+  border-radius: var(--wm-btn-radius-base);
+  padding: var(--wm-btn-space);
+  min-width: var(--wm-btn-min-width);
+  min-height: var(--wm-btn-height-base);
+  line-height: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.wm-app .btn i + .caption {
+  margin-left: var(--wm-space-2);
+}
+.wm-app .btn .app-icon {
+  padding: 0;
+}
+.wm-app .btn .app-icon + span + .btn-caption:not(:empty),
+.wm-app .btn .app-icon + .btn-caption:not(:empty) {
+  margin-left: var(--wm-space-2);
+}
+.wm-app .btn .btn-caption {
+  margin: 0;
+}
+.wm-app .btn .btn-caption:not(:empty) + .app-icon {
+  margin-left: var(--wm-space-2);
+}
+.wm-app .btn[iconposition="right"] i.app-icon {
+  margin-left: var(--wm-space-2) !important;
+}
+.wm-app .btn[iconposition="right"] .btn-caption {
+  margin: 0 !important;
+}
+.wm-app .btn[iconposition="top"] {
+  flex-direction: column;
+}
+.wm-app .btn[iconposition="top"] .button-image-icon + .btn-caption {
+  margin-top: var(--wm-space-1);
+}
+.wm-app .btn-fab {
+  min-width: auto;
+}
+.wm-app .btn-xs {
+  font-size: 8px;
+}
+.wm-app .btn-sm {
+  font-size: 14px;
+  padding: var(--wm-space-2) calc(var(--wm-space-4) * 1.25);
+  height: var(--btn-height-small);
+}
+.wm-app .btn-lg {
+  font-size: 16px;
+  height: var(--btn-height-large);
+}
+.wm-app .btn-block + .btn.btn-block {
+  margin-top: 0;
+}
+.wm-app .btn:before {
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background: var(--wm-btn-state-layer-color);
+}
+.wm-app .btn:hover,
+.wm-app .btn:focus,
+.wm-app .btn.focus {
+  color: var(--wm-btn-text-color);
+  background: var(--wm-btn-bg);
+  border-color: var(--wm-btn-border-color);
+}
+.wm-app .btn:hover::before,
+.wm-app .btn:focus::before,
+.wm-app .btn.focus::before {
+  opacity: var(--wm-btn-hover-state-layer-opacity);
+}
+.wm-app .btn:active,
+.wm-app .btn:active:focus,
+.wm-app .btn:active:hover,
+.wm-app .btn:active.focus {
+  color: var(--wm-btn-text-color);
+  background: var(--wm-btn-bg);
+  border-color: var(--wm-btn-border-color);
+  box-shadow: none;
+}
+.wm-app .btn:active::before,
+.wm-app .btn:active:focus::before,
+.wm-app .btn:active:hover::before,
+.wm-app .btn:active.focus::before {
+  opacity: var(--wm-btn-pressed-state-layer-opacity);
+}
+.wm-app .btn.btn-basic {
+  color: var(--wm-btn-text-color);
+  background: transparent;
+  border: none;
+}
+.wm-app .btn.btn-basic:hover,
+.wm-app .btn.btn-basic:focus,
+.wm-app .btn.btn-basic:active,
+.wm-app .btn.btn-basic:active:focus,
+.wm-app .btn.btn-basic:active:hover,
+.wm-app .btn.btn-basic:active.focus,
+.wm-app .btn.btn-basic.focus {
+  color: var(--wm-btn-text-color);
+  background-color: transparent;
+  border: none;
+  box-shadow: var(--wm-btn-shadow);
+}
+.wm-app .btn.btn-raised {
+  box-shadow: var(--wm-btn-raised-shadow);
+  border: none;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wm-app .btn.btn-raised:hover,
+.wm-app .btn.btn-raised:focus,
+.wm-app .btn.btn-raised.focus {
+  box-shadow: var(--wm-btn-raised-hover-shadow);
+  border: none;
+}
+.wm-app .btn.btn-raised:active,
+.wm-app .btn.btn-raised:active:focus,
+.wm-app .btn.btn-raised:active:hover,
+.wm-app .btn.btn-raised:active.focus {
+  box-shadow: var(--wm-btn-raised-active-shadow);
+  border: none;
+}
+.wm-app .btn.btn-stroked {
+  color: var(--wm-btn-text-color);
+  background: var(--wm-btn-contrast-light);
+  border: 1px solid var(--wm-btn-border-color);
+  transition: border 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wm-app .btn.btn-stroked:hover,
+.wm-app .btn.btn-stroked:focus,
+.wm-app .btn.btn-stroked:active,
+.wm-app .btn.btn-stroked:active:focus,
+.wm-app .btn.btn-stroked:active:hover,
+.wm-app .btn.btn-stroked:active.focus,
+.wm-app .btn.btn-stroked.focus {
+  color: var(--wm-btn-text-color);
+  background: transparent;
+  border: 1px solid var(--wm-btn-border-color);
+  box-shadow: var(--wm-btn-shadow);
+}
+.wm-app .btn.btn-rounded {
+  border-radius: calc(var(--wm-rule-space) * 10);
+  padding: var(--wm-btn-space);
+}
+.wm-app .btn-default {
+  --wm-btn-text-color: color-mix(in srgb, var(--wm-btn-contrast-dark), var(--wm-btn-contrast-light) 40%);
+  --wm-btn-bg: var(--wm-btn-contrast-light);
+  --wm-btn-border-color: var(--wm-separator-color);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-default .app-icon {
+  color: var(--btn-default-icon-color);
+}
+.wm-app .btn-default.btn-basic,
+.wm-app .btn-default.btn-stroked {
+  --wm-btn-text-color: var(--wm-btn-contrast-dark);
+}
+.wm-app .btn-default.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-primary {
+  --wm-btn-text-color: var(--wm-btn-contrast-light);
+  --wm-btn-bg: var(--wm-color-primary);
+  --wm-btn-border-color: var(--wm-color-primary);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-primary.btn-basic,
+.wm-app .btn-primary.btn-stroked {
+  --wm-btn-text-color: var(--wm-color-primary);
+}
+.wm-app .btn-primary.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-secondary {
+  --wm-btn-text-color: var(--wm-btn-contrast-light);
+  --wm-btn-bg: var(--wm-color-secondary);
+  --wm-btn-border-color: var(--wm-color-secondary);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-secondary.btn-basic,
+.wm-app .btn-secondary.btn-stroked {
+  --wm-btn-text-color: var(--wm-color-secondary);
+}
+.wm-app .btn-secondary.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-success {
+  --wm-btn-text-color: var(--wm-btn-contrast-light);
+  --wm-btn-bg: var(--wm-color-success);
+  --wm-btn-border-color: var(--wm-color-success);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-success.btn-basic,
+.wm-app .btn-success.btn-stroked {
+  --wm-btn-text-color: var(--wm-color-success);
+}
+.wm-app .btn-success.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-info {
+  --wm-btn-text-color: var(--wm-btn-contrast-light);
+  --wm-btn-bg: var(--wm-color-info);
+  --wm-btn-border-color: var(--wm-color-info);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-info.btn-basic,
+.wm-app .btn-info.btn-stroked {
+  --wm-btn-text-color: var(--wm-color-info);
+}
+.wm-app .btn-info.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-warning {
+  --wm-btn-text-color: var(--wm-btn-contrast-light);
+  --wm-btn-bg: var(--wm-color-warning);
+  --wm-btn-border-color: var(--wm-color-warning);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-warning.btn-basic,
+.wm-app .btn-warning.btn-stroked {
+  --wm-btn-text-color: var(--wm-color-warning);
+}
+.wm-app .btn-warning.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-danger {
+  --wm-btn-text-color: var(--wm-btn-contrast-light);
+  --wm-btn-bg: var(--wm-color-danger);
+  --wm-btn-border-color: var(--wm-color-danger);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-danger.btn-basic,
+.wm-app .btn-danger.btn-stroked {
+  --wm-btn-text-color: var(--wm-color-danger);
+}
+.wm-app .btn-danger.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-link {
+  --wm-btn-text-color: var(--wm-btn-contrast-dark);
+  --wm-btn-bg: var(--wm-btn-contrast-light);
+  --wm-btn-border-color: var(--wm-btn-contrast-light);
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-link.btn-basic,
+.wm-app .btn-link.btn-stroked {
+  --wm-btn-text-color: var(--wm-btn-contrast-dark);
+}
+.wm-app .btn-link.btn-raised {
+  --wm-btn-state-layer-color: var(--wm-btn-text-color);
+}
+.wm-app .btn-transparent {
+  min-height: auto;
+  min-width: auto;
+}
+.wm-app .btn.disabled,
+.wm-app .btn[disabled] {
+  opacity: 1;
+  box-shadow: none;
+  --wm-btn-text-color: var(--wm-color-dark-grey-200);
+  --wm-btn-bg: var(--wm-color-mid-grey-100);
+  --wm-btn-border-color: var(--wm-btn-bg);
+}
+.wm-app .btn.disabled.btn-basic,
+.wm-app .btn[disabled].btn-basic {
+  --wm-btn-text-color: var(--wm-color-dark-grey-200);
+}
+.wm-app .btn.disabled.btn-basic:hover,
+.wm-app .btn[disabled].btn-basic:hover,
+.wm-app .btn.disabled.btn-basic:focus,
+.wm-app .btn[disabled].btn-basic:focus,
+.wm-app .btn.disabled.btn-basic.focus,
+.wm-app .btn[disabled].btn-basic.focus,
+.wm-app .btn.disabled.btn-basic:active,
+.wm-app .btn[disabled].btn-basic:active,
+.wm-app .btn.disabled.btn-basic:active:focus,
+.wm-app .btn[disabled].btn-basic:active:focus,
+.wm-app .btn.disabled.btn-basic:active:hover,
+.wm-app .btn[disabled].btn-basic:active:hover,
+.wm-app .btn.disabled.btn-basic:active.focus,
+.wm-app .btn[disabled].btn-basic:active.focus {
+  --wm-btn-bg: transparent;
+}
+.wm-app .btn.disabled.btn-stroked,
+.wm-app .btn[disabled].btn-stroked {
+  --wm-btn-text-color: var(--wm-color-dark-grey-200);
+}
+.wm-app .btn.disabled.btn-stroked:hover,
+.wm-app .btn[disabled].btn-stroked:hover,
+.wm-app .btn.disabled.btn-stroked:focus,
+.wm-app .btn[disabled].btn-stroked:focus,
+.wm-app .btn.disabled.btn-stroked.focus,
+.wm-app .btn[disabled].btn-stroked.focus,
+.wm-app .btn.disabled.btn-stroked:active,
+.wm-app .btn[disabled].btn-stroked:active,
+.wm-app .btn.disabled.btn-stroked:active:focus,
+.wm-app .btn[disabled].btn-stroked:active:focus,
+.wm-app .btn.disabled.btn-stroked:active:hover,
+.wm-app .btn[disabled].btn-stroked:active:hover,
+.wm-app .btn.disabled.btn-stroked:active.focus,
+.wm-app .btn[disabled].btn-stroked:active.focus {
+  --wm-btn-bg: var(--wm-btn-contrast-light);
+  --wm-btn-border-color: rgba(0, 0, 0, 0.12);
+}
+.wm-app .btn.disabled.btn-raised,
+.wm-app .btn[disabled].btn-raised {
+  --wm-btn-text-color: var(--wm-color-dark-grey-200);
+  box-shadow: none;
+}
+.wm-app .btn.disabled.btn-raised:hover,
+.wm-app .btn[disabled].btn-raised:hover,
+.wm-app .btn.disabled.btn-raised:focus,
+.wm-app .btn[disabled].btn-raised:focus,
+.wm-app .btn.disabled.btn-raised.focus,
+.wm-app .btn[disabled].btn-raised.focus,
+.wm-app .btn.disabled.btn-raised:active,
+.wm-app .btn[disabled].btn-raised:active,
+.wm-app .btn.disabled.btn-raised:active:focus,
+.wm-app .btn[disabled].btn-raised:active:focus,
+.wm-app .btn.disabled.btn-raised:active:hover,
+.wm-app .btn[disabled].btn-raised:active:hover,
+.wm-app .btn.disabled.btn-raised:active.focus,
+.wm-app .btn[disabled].btn-raised:active.focus {
+  box-shadow: none;
+}
+.wm-app .btn.disabled:hover,
+.wm-app .btn[disabled]:hover,
+.wm-app .btn.disabled:focus,
+.wm-app .btn[disabled]:focus,
+.wm-app .btn.disabled.focus,
+.wm-app .btn[disabled].focus,
+.wm-app .btn.disabled:active,
+.wm-app .btn[disabled]:active,
+.wm-app .btn.disabled:active:focus,
+.wm-app .btn[disabled]:active:focus,
+.wm-app .btn.disabled:active:hover,
+.wm-app .btn[disabled]:active:hover,
+.wm-app .btn.disabled:active.focus,
+.wm-app .btn[disabled]:active.focus {
+  --wm-btn-text-color: var(--wm-color-dark-grey-200);
+  --wm-btn-bg: var(--wm-color-mid-grey-100);
+  --wm-btn-border-color: var(--wm-btn-bg);
+  background-color: var(--wm-btn-bg);
+  border-color: var(--wm-btn-border-color);
+}
+.wm-app .btn.disabled::before,
+.wm-app .btn[disabled]::before {
+  display: none;
+}
+.wm-app a {
+  color: var(--link-color);
+}
+.wm-app a.text-muted.app-anchor {
+  color: var(--wm-text-muted-color);
+}
+.wm-app a.text-muted.app-anchor:hover,
+.wm-app a.text-muted.app-anchor:focus {
+  color: color-mix(in srgb, var(--link-color), #000000 3%);
+}
+.wm-app a:hover,
+.wm-app a:focus {
+  color: color-mix(in srgb, var(--link-color), #000000 3%);
+  text-decoration: none;
+}
+.wm-app .app-icon-wrapper {
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+.wm-app .app-icon-wrapper .app-icon {
+  padding-right: 0;
+}
+.wm-app .app-icon-wrapper .app-icon + span + .app-label {
+  margin-left: var(--label-2-label-spacing);
+}
+.wm-app .app-icon-wrapper:not([iconclass]) .app-label {
+  margin-left: var(--label-2-label-spacing);
+}
+.wm-app .app-chip {
+  border-radius: var(--wm-space-6);
+  min-height: 34px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--wm-space-2) var(--wm-space-4);
+  box-shadow: inset 0 0 0 1px rgba(207, 219, 213, 0.6);
+}
+.wm-app .app-composite-widget {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--wm-space-3);
+}
+.wm-app .app-composite-widget .control-label {
+  font-size: var(--wm-caption-size);
+  line-height: 1.3335;
+  color: var(--wm-caption-color);
+  font-weight: var(--wm-caption-weight);
+  margin: var(--wm-caption-offset);
+  padding: var(--wm-caption-inset);
+}
+.wm-app .app-composite-widget .control-label.required:after {
+  content: "*";
+  color: inherit;
+  margin-left: 1px;
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control {
+  color: var(--wm-input-color);
+  background: var(--wm-input-bg);
+  border: 1px solid var(--wm-input-border-color);
+  border-radius: var(--wm-input-radius);
+  height: var(--wm-input-height);
+  width: 100%;
+  padding: 0 var(--wm-input-padding);
+  font-size: var(--wm-input-text-size);
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control::-moz-placeholder {
+  color: var(--wm-input-place-holder);
+  opacity: 1;
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control::-ms-input-placeholder {
+  color: var(--wm-input-place-holder);
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control::-webkit-input-placeholder {
+  color: var(--wm-input-place-holder);
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.ng-touched.ng-invalid {
+  border: 1px solid var(--wm-color-error);
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.ng-touched.ng-invalid:focus {
+  border: 1px solid var(--wm-color-error);
+  box-shadow: inset 0 0 0 1px var(--wm-color-error);
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control:focus {
+  border: 1px solid var(--wm-color-primary);
+  box-shadow: inset 0 0 0 1px var(--wm-color-primary);
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.with-leading-icon {
+  padding-left: calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md));
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.with-trailing-icon {
+  padding-right: calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md));
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.filled {
+  --wm-input-bg: var(--wm-color-surface-container-highest);
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+  padding-top: 14px;
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.filled.ng-touched.ng-invalid {
+  border: 1px solid var(--wm-color-error);
+  border-width: 0 0 1px 0;
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.filled.ng-touched.ng-invalid:focus {
+  border: 1px solid var(--wm-color-error);
+  border-width: 0 0 1px 0;
+  box-shadow: inset 0 -1px 0 0 var(--wm-color-error);
+}
+.wm-app .app-composite-widget .app-input-wrapper .form-control.filled:focus {
+  border: 1px solid var(--wm-color-primary);
+  border-width: 0 0 1px 0;
+  box-shadow: inset 0 -1px 0 0 var(--wm-color-primary);
+}
+.wm-app .app-composite-widget:has(.app-input-wrapper .form-control:not(.ng-touched.ng-invalid):focus) .control-label {
+  color: var(--wm-color-primary);
+}
+.wm-app .app-composite-widget:has(.app-input-wrapper .form-control.ng-touched.ng-invalid) .control-label {
+  color: var(--wm-color-error);
+}
+.wm-app .app-composite-widget .btn {
+  padding: 0;
+  background: none;
+  border: none;
+  min-height: auto;
+}
+.wm-app .app-composite-widget .btn .app-icon {
+  font-size: var(--wm-icon-size-md);
+}
+.wm-app .app-composite-widget .btn-leading-icon,
+.wm-app .app-composite-widget .btn-trailing-icon {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - calc(var(--wm-icon-size-md)/2));
+  left: calc(var(--wm-input-padding) * 0.75);
+}
+.wm-app .app-composite-widget .btn-trailing-icon {
+  left: auto;
+  right: calc(var(--wm-input-padding) * 0.75);
+}
+.wm-app .app-composite-widget .helper-wrapper .helper-text {
+  font-size: var(--wm-caption-size);
+  font-weight: var(--wm-caption-weight);
+  color: var(--wm-caption-color);
+  margin-top: 4px;
+  padding: 0 var(--wm-input-padding);
+}
+.wm-app .app-composite-widget .helper-wrapper .helper-text.required:after {
+  content: "*";
+  display: none;
+}
+.wm-app .app-composite-widget.caption-floating {
+  margin-top: 1rem;
+}
+.wm-app .app-composite-widget.caption-floating .control-label {
+  display: inline-flex;
+  align-items: center;
+  height: var(--wm-input-height);
+  max-width: calc(100% - var(--wm-input-padding) - var(--wm-input-padding));
+  left: var(--wm-input-padding);
+  top: 0;
+  padding: 0;
+  opacity: 1;
+  font-size: var(--wm-input-text-size);
+  color: var(--wm-input-place-holder);
+  background: none;
+}
+.wm-app .app-composite-widget.caption-floating .control-label.with-leading-icon {
+  max-width: calc(100% - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)) - var(--wm-input-padding));
+  left: calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md));
+}
+.wm-app .app-composite-widget.caption-floating .control-label.with-leading-icon.with-trailing-icon {
+  max-width: calc(100% - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)) - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)));
+}
+.wm-app .app-composite-widget.caption-floating .control-label.with-trailing-icon {
+  max-width: calc(100% - var(--wm-input-padding) - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)));
+}
+.wm-app .app-composite-widget.caption-floating .app-input-wrapper .form-control {
+  --wm-input-place-holder: transparent;
+}
+.wm-app .app-composite-widget.caption-floating.float-active .control-label {
+  color: var(--wm-caption-color);
+  padding: 2px 4px;
+  top: -10px;
+  left: calc(var(--wm-input-padding) - 4px);
+  width: auto;
+  height: auto;
+  font-size: var(--wm-caption-size);
+  transform: none;
+}
+.wm-app .app-composite-widget.caption-floating.float-active .control-label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--wm-input-bg);
+  z-index: -1;
+}
+.wm-app .app-composite-widget.caption-floating.float-active .control-label.filled {
+  left: var(--wm-input-padding);
+  top: calc(var(--wm-input-padding)/2);
+  padding: 0;
+}
+.wm-app .app-composite-widget.caption-floating.float-active .control-label.filled:before {
+  background: none;
+}
+.wm-app .app-composite-widget.caption-floating.float-active .control-label.filled.with-leading-icon {
+  left: calc(calc(var(--wm-input-padding)* 1.5) + var(--wm-icon-size-md));
+}
+.wm-app .app-composite-widget.caption-right .control-label {
+  margin-left: 24px;
+}
+.wm-app .ng-invalid[required="true"] .app-composite-widget.caption-floating.float-active.active .control-label {
+  color: var(--wm-color-danger);
+}
+.wm-app [wmformfield][readonly="true"] .app-composite-widget.caption-floating {
+  margin-top: 0;
+}
+.wm-app [wmformfield][readonly="true"] .app-composite-widget.caption-floating .control-label {
+  padding: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  width: auto;
+  height: auto;
+  transform: none;
+  margin-bottom: 4px;
+  color: var(--wm-text-muted-color);
+  font-size: 13px;
+}
+.wm-app .app-switch {
+  box-shadow: none;
+  background: none;
+  border-radius: var(--border-radius-base);
+  height: var(--switch-height);
+  width: 100%;
+}
+.wm-app .app-switch .btn-group {
+  display: flex;
+  width: 100%;
+}
+.wm-app .app-switch .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 500px;
+  border-top-right-radius: 500px;
+  margin-right: 6px  ;
+}
+.wm-app .app-switch .btn-group > .btn:last-child:not(:first-child):not(.dropdown-toggle) {
+  border-bottom-left-radius: 500px;
+  border-top-left-radius: 500px;
+  margin-left: 6px ;
+}
+.wm-app .app-switch .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 500px;
+  margin: 0 6px ;
+}
+.wm-app .app-switch .btn {
+  line-height: 18px;
+  font-weight: var(--wm-font-weight-bold);
+  color: var(--wm-text-muted-color);
+  text-transform: none;
+  font-size: var(--wm-h6-font-size);
+  width: 100%;
+}
+.wm-app .app-switch .btn:hover,
+.wm-app .app-switch .btn:focus {
+  background: inherit;
+  color: var(--wm-color-primary);
+}
+.wm-app .app-switch .btn.selected {
+  border-color: var(--wm-color-primary);
+  background: var(--wm-color-primary-10);
+  color: var(--wm-color-primary);
+}
+.wm-app .app-switch .btn + .btn {
+  margin: var(--wm-space-0) var(--wm-space-0) var(--wm-space-0) var(--wm-space-3);
+}
+.wm-app .app-switch .btn.app-switch-overlay {
+  display: none;
+  background-color: transparent;
+  color: var(--primary-bg-text);
+  box-shadow: none;
+  font-weight: var(--font-weight-medium);
+}
+.wm-app .app-grid-layout > .app-grid-row {
+  display: flex;
+}
+.wm-app .app-grid-layout > .app-grid-row > .app-grid-column {
+  padding: var(--wm-space-2);
+}
+.wm-app .app-grid-layout.space-0 > .app-grid-row > .app-grid-column {
+  padding: var(--wm-space-0);
+}
+.wm-app .app-grid-layout.space-1 > .app-grid-row > .app-grid-column {
+  padding: var(--wm-space-1);
+}
+.wm-app .app-grid-layout.space-2 > .app-grid-row > .app-grid-column {
+  padding: var(--wm-space-2);
+}
+.wm-app .app-grid-layout.space-3 > .app-grid-row > .app-grid-column {
+  padding: var(--wm-space-3);
+}
+.wm-app .panel {
+  margin-bottom: 0;
+}
+.wm-app .panel:not(div):not([hidden]):not(.ng-hide) + .panel,
+.wm-app .panel:not(div):not([hidden]):not(.ng-hide) + .wm-focus-rect:not(.ng-hide) + .panel {
+  margin-top: var(--widget-below-widget-spacing);
+}
+.wm-app .panel,
+.wm-app .card {
+  border-radius: var(--border-radius-base);
+  border: 0px solid transparent;
+  background: var(--wm-color-contrast-light);
+  padding: 0;
+  /* styles for tabs inside panels to handle the padding values*/
+}
+.wm-app .panel.panel-secondary > .panel-heading,
+.wm-app .card.panel-secondary > .panel-heading {
+  background: var(--brand-secondary);
+}
+.wm-app .panel .panel-heading .panel-title,
+.wm-app .card .panel-heading .panel-title {
+  font-size: var(--wm-h2-font-size);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wm-app .panel .panel-heading .panel-title > *:empty,
+.wm-app .card .panel-heading .panel-title > *:empty {
+  display: none;
+}
+.wm-app .panel .panel-heading .panel-title .description,
+.wm-app .card .panel-heading .panel-title .description {
+  text-transform: var(--text-transform-body);
+  opacity: 0.8;
+}
+.wm-app .panel .panel-heading .panel-title .description:not(:empty),
+.wm-app .card .panel-heading .panel-title .description:not(:empty) {
+  margin-top: 0px;
+}
+.wm-app .panel .panel-heading .panel-actions,
+.wm-app .card .panel-heading .panel-actions {
+  margin: 0;
+}
+.wm-app .panel .panel-heading .panel-actions .panel-action a:focus,
+.wm-app .card .panel-heading .panel-actions .panel-action a:focus,
+.wm-app .panel .panel-heading .panel-actions .panel-action a:hover,
+.wm-app .card .panel-heading .panel-actions .panel-action a:hover {
+  text-decoration: none;
+}
+.wm-app .panel .panel-heading .panel-actions .panel-action .app-anchor,
+.wm-app .card .panel-heading .panel-actions .panel-action .app-anchor {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wm-app .panel .panel-heading .panel-actions .panel-action .app-anchor:hover,
+.wm-app .card .panel-heading .panel-actions .panel-action .app-anchor:hover,
+.wm-app .panel .panel-heading .panel-actions .panel-action .app-anchor:focus,
+.wm-app .card .panel-heading .panel-actions .panel-action .app-anchor:focus {
+  background-color: rgba(158, 158, 158, 0.2);
+  border-radius: 50%;
+  transition: color 0.5s ease, background 0.5s ease;
+  -webkit-transition: color 0.5s ease, background 0.5s ease;
+  -moz-transition: color 0.5s ease, background 0.5s ease;
+  -ms-transition: color 0.5s ease, background 0.5s ease;
+  -o-transition: color 0.5s ease, background 0.5s ease;
+}
+.wm-app .panel .panel-heading + .panel-content .panel-body,
+.wm-app .card .panel-heading + .panel-content .panel-body {
+  padding-top: 0;
+}
+.wm-app .panel .app-card-image img,
+.wm-app .card .app-card-image img {
+  border-radius: var(--border-radius-base);
+}
+.wm-app .panel .app-tabs .app-grid,
+.wm-app .card .app-tabs .app-grid,
+.wm-app .panel .app-tabs .app-panel,
+.wm-app .card .app-tabs .app-panel,
+.wm-app .panel .app-tabs .app-list,
+.wm-app .card .app-tabs .app-list,
+.wm-app .panel .app-tabs .app-livelist,
+.wm-app .card .app-tabs .app-livelist {
+  padding: 0;
+}
+.wm-app .panel.panel-* .panel-heading,
+.wm-app .card.panel-* .panel-heading {
+  border-top-left-radius: var(--border-radius-base);
+  border-top-right-radius: var(--border-radius-base);
+}
+.wm-app img {
+  vertical-align: baseline;
+}
+.wm-app::-webkit-scrollbar,
+.wm-app ::-webkit-scrollbar {
+  width: var(--scroll-bar-width);
+  height: var(--scroll-bar-height);
+}
+.wm-app::-webkit-scrollbar-track,
+.wm-app ::-webkit-scrollbar-track {
+  background: var(--scroll-bar-track);
+  border-radius: var(--scroll-bar-width);
+}
+.wm-app::-webkit-scrollbar-thumb,
+.wm-app ::-webkit-scrollbar-thumb {
+  background: var(--scroll-bar-thumb);
+  border-radius: var(--scroll-bar-width);
+}
+.wm-app::-webkit-scrollbar-thumb:hover,
+.wm-app ::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-bar-thumb-hover);
+}
+.wm-app .thin,
+.wm-app .w-100 {
+  font-weight: 100;
+}
+.wm-app .extralight,
+.wm-app .w-200 {
+  font-weight: 200;
+}
+.wm-app .light,
+.wm-app .w-300 {
+  font-weight: 300;
+}
+.wm-app .regular,
+.wm-app .w-400 {
+  font-weight: 400;
+}
+.wm-app .medium,
+.wm-app .w-500 {
+  font-weight: 500;
+}
+.wm-app .semibold,
+.wm-app .w-600 {
+  font-weight: 600;
+}
+.wm-app .bold,
+.wm-app .w-700 {
+  font-weight: 700;
+}
+.wm-app .extrabold,
+.wm-app .w-800 {
+  font-weight: 800;
+}
+.wm-app .black,
+.wm-app .w-900 {
+  font-weight: 900;
+}
+.wm-app .pointer {
+  cursor: pointer;
+}
+.wm-app .pointer *:not([disabled]) {
+  cursor: pointer;
+}
+.wm-app .label-primary {
+  background: var(--wm-color-primary-30);
+  color: var(--wm-color-primary);
+}
+.wm-app .label-success {
+  background: var(--wm-color-success-o);
+  color: var(--wm-color-success);
+}
+.wm-app .label-info {
+  background: var(--wm-color-info-o);
+  color: var(--wm-color-info);
+}
+.wm-app .label-warning {
+  background: var(--wm-color-warning-200);
+  color: var(--wm-color-warning);
+}
+.wm-app .label-muted {
+  color: var(--wm-text-muted-color);
+  background-color: var(--wm-text-muted-color);
+}
+.wm-app .label-danger {
+  background: var(--wm-color-danger2-o);
+  color: var(--wm-color-danger2);
+}
+.wm-app .text-danger {
+  color: var(--wm-color-danger);
+}
+.wm-app .text-success {
+  color: var(--wm-color-success);
+}
+.wm-app .text-info {
+  color: var(--wm-color-info);
+}
+.wm-app .text-primary {
+  color: var(--wm-color-primary);
+}
+.wm-app .text-warning {
+  color: var(--wm-color-warning);
+}
+.wm-app .text-muted {
+  color: var(--wm-text-muted-color);
+}
+.wm-app .inline {
+  display: inline;
+  width: auto;
+}
+.wm-app .flex {
+  display: flex;
+}
+.wm-app .inline-flex {
+  display: inline-flex;
+}
+.wm-app .dir-column {
+  flex-direction: column;
+}
+.wm-app .dir-row {
+  flex-direction: row;
+}
+.wm-app .vert-center {
+  align-items: center;
+}
+.wm-app .horz-center {
+  justify-content: center;
+}
+.wm-app .flex-start {
+  justify-content: flex-start;
+}
+.wm-app .flex-end {
+  justify-content: flex-end;
+}
+.wm-app .space-between {
+  justify-content: space-between;
+}
+.wm-app .space-around {
+  justify-content: space-around;
+}
+.wm-app .space-evenly {
+  justify-content: space-evenly;
+}
+.wm-app .p-0 {
+  padding: 0 !important;
+}
+.wm-app .space-0 {
+  padding: var(--wm-space-0);
+}
+.wm-app .space-1 {
+  padding: var(--wm-space-1);
+}
+.wm-app .space-2 {
+  padding: var(--wm-space-2);
+}
+.wm-app .space-3 {
+  padding: var(--wm-space-3);
+}
+.wm-app .space-4 {
+  padding: var(--wm-space-4);
+}
+.wm-app .space-5 {
+  padding: var(--wm-space-5);
+}
+.wm-app .space-6 {
+  padding: var(--wm-space-6);
+}
+.wm-app .space-7 {
+  padding: var(--wm-space-7);
+}
+.wm-app .space-8 {
+  padding: var(--wm-space-8);
+}
+.wm-app .space-9 {
+  padding: var(--wm-space-9);
+}
+.wm-app .space-10 {
+  padding: var(--wm-space-10);
+}
+.wm-app .space-11 {
+  padding: var(--wm-space-11);
+}
+.wm-app .space-12 {
+  padding: var(--wm-space-12);
+}
+.wm-app .space-vert-2 {
+  padding-top: var(--wm-space-2) !important;
+  padding-bottom: var(--wm-space-2) !important;
+}
+.wm-app .radius-0 {
+  border-radius: var(--wm-space-0);
+}
+.wm-app .radius-1 {
+  border-radius: var(--wm-space-1);
+}
+.wm-app .radius-2 {
+  border-radius: var(--wm-space-2);
+}
+.wm-app .radius-3 {
+  border-radius: var(--wm-space-3);
+}
+.wm-app .radius-4 {
+  border-radius: var(--wm-space-4);
+}
+.wm-app .radius-5 {
+  border-radius: var(--wm-space-5);
+}
+.wm-app .radius-6 {
+  border-radius: var(--wm-space-6);
+}
+.wm-app .radius-7 {
+  border-radius: var(--wm-space-7);
+}
+.wm-app .radius-8 {
+  border-radius: var(--wm-space-8);
+}
+.wm-app .radius-9 {
+  border-radius: var(--wm-space-9);
+}
+.wm-app .radius-10 {
+  border-radius: var(--wm-space-10);
+}
+.wm-app .radius-11 {
+  border-radius: var(--wm-space-11);
+}
+.wm-app .radius-12 {
+  border-radius: var(--wm-space-12);
+}
+.wm-app .decoration-none {
+  text-decoration: none;
+}
+.wm-app .decoration-none:hover {
+  text-decoration: none;
+}
+.wm-app .img-on-dark {
+  filter: invert(100%) grayscale(100%) brightness(10);
+}
+.wm-app .col-1 {
+  width: 8.33333333%;
+}
+.wm-app .col-2 {
+  width: 16.66666667%;
+}
+.wm-app .col-3 {
+  width: 25%;
+}
+.wm-app .col-4 {
+  width: 33.33333333%;
+}
+.wm-app .col-5 {
+  width: 41.66666667%;
+}
+.wm-app .col-6 {
+  width: 50%;
+}
+.wm-app .col-7 {
+  width: 58.33333333%;
+}
+.wm-app .col-8 {
+  width: 66.66666667%;
+}
+.wm-app .col-9 {
+  width: 75%;
+}
+.wm-app .col-10 {
+  width: 83.33333333%;
+}
+.wm-app .col-11 {
+  width: 91.66666667%;
+}
+.wm-app .col-12 {
+  width: 100%;
+}
+@media (min-width: 576px) {
+  .wm-app .col-sm-1 {
+    width: 8.33333333%;
+  }
+  .wm-app .col-sm-2 {
+    width: 16.66666667%;
+  }
+  .wm-app .col-sm-3 {
+    width: 25%;
+  }
+  .wm-app .col-sm-4 {
+    width: 33.33333333%;
+  }
+  .wm-app .col-sm-5 {
+    width: 41.66666667%;
+  }
+  .wm-app .col-sm-6 {
+    width: 50%;
+  }
+  .wm-app .col-sm-7 {
+    width: 58.33333333%;
+  }
+  .wm-app .col-sm-8 {
+    width: 66.66666667%;
+  }
+  .wm-app .col-sm-9 {
+    width: 75%;
+  }
+  .wm-app .col-sm-10 {
+    width: 83.33333333%;
+  }
+  .wm-app .col-sm-11 {
+    width: 91.66666667%;
+  }
+  .wm-app .col-sm-12 {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .wm-app .col-md-1 {
+    width: 8.33333333%;
+  }
+  .wm-app .col-md-2 {
+    width: 16.66666667%;
+  }
+  .wm-app .col-md-3 {
+    width: 25%;
+  }
+  .wm-app .col-md-4 {
+    width: 33.33333333%;
+  }
+  .wm-app .col-md-5 {
+    width: 41.66666667%;
+  }
+  .wm-app .col-md-6 {
+    width: 50%;
+  }
+  .wm-app .col-md-7 {
+    width: 58.33333333%;
+  }
+  .wm-app .col-md-8 {
+    width: 66.66666667%;
+  }
+  .wm-app .col-md-9 {
+    width: 75%;
+  }
+  .wm-app .col-md-10 {
+    width: 83.33333333%;
+  }
+  .wm-app .col-md-11 {
+    width: 91.66666667%;
+  }
+  .wm-app .col-md-12 {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .wm-app .col-lg-1 {
+    width: 8.33333333%;
+  }
+  .wm-app .col-lg-2 {
+    width: 16.66666667%;
+  }
+  .wm-app .col-lg-3 {
+    width: 25%;
+  }
+  .wm-app .col-lg-4 {
+    width: 33.33333333%;
+  }
+  .wm-app .col-lg-5 {
+    width: 41.66666667%;
+  }
+  .wm-app .col-lg-6 {
+    width: 50%;
+  }
+  .wm-app .col-lg-7 {
+    width: 58.33333333%;
+  }
+  .wm-app .col-lg-8 {
+    width: 66.66666667%;
+  }
+  .wm-app .col-lg-9 {
+    width: 75%;
+  }
+  .wm-app .col-lg-10 {
+    width: 83.33333333%;
+  }
+  .wm-app .col-lg-11 {
+    width: 91.66666667%;
+  }
+  .wm-app .col-lg-12 {
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .wm-app .col-xl-1 {
+    width: 8.33333333%;
+  }
+  .wm-app .col-xl-2 {
+    width: 16.66666667%;
+  }
+  .wm-app .col-xl-3 {
+    width: 25%;
+  }
+  .wm-app .col-xl-4 {
+    width: 33.33333333%;
+  }
+  .wm-app .col-xl-5 {
+    width: 41.66666667%;
+  }
+  .wm-app .col-xl-6 {
+    width: 50%;
+  }
+  .wm-app .col-xl-7 {
+    width: 58.33333333%;
+  }
+  .wm-app .col-xl-8 {
+    width: 66.66666667%;
+  }
+  .wm-app .col-xl-9 {
+    width: 75%;
+  }
+  .wm-app .col-xl-10 {
+    width: 83.33333333%;
+  }
+  .wm-app .col-xl-11 {
+    width: 91.66666667%;
+  }
+  .wm-app .col-xl-12 {
+    width: 100%;
+  }
+}

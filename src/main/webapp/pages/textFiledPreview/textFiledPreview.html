@@ -1,0 +1,60 @@
+<wm-page pagetitle="Text Filed Preview" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn7"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn1">
+                        <wm-custom-widget widgetname="textField" on-clear="afterClear()">
+                            <wm-prop name="leading_icon" value="false" type="boolean"></wm-prop>
+                            <wm-prop name="trailing_icon" value="true" type="boolean"></wm-prop>
+                            <wm-prop name="leading_icon_class" value="wi wi-search" type="string"></wm-prop>
+                            <wm-prop name="trailing_icon_class" value="wi wi-user" type="string"></wm-prop>
+                            <wm-prop name="style" value="outlined" type="string"></wm-prop>
+                            <wm-prop name="state" value="enabled" type="string"></wm-prop>
+                            <wm-prop name="inputType" value="text" type="string"></wm-prop>
+                            <wm-prop name="supporting_text" value="Supporting text" type="string"></wm-prop>
+                            <wm-prop name="required" value="true" type="boolean"></wm-prop>
+                            <wm-prop name="input_text" value="Brett.Smith" type="string"></wm-prop>
+                            <wm-prop name="label_text" value="Username" type="string"></wm-prop>
+                            <wm-prop name="placeholder_text" value="Placeholder" type="string"></wm-prop>
+                            <wm-prop name="show_supporting_text" value="false" type="boolean"></wm-prop>
+                            <wm-prop name="text_configurations" value="input-text" type="string"></wm-prop>
+                        </wm-custom-widget>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn8"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn2">
+                        <wm-layoutgrid name="layoutgrid2" columns="1">
+                            <wm-gridrow name="gridrow6">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn13">
+                                    <wm-composite name="composite1" captionposition="left">
+                                        <wm-label class="col-md-9 control-label" notag="true" name="label1" caption="Leading icon"></wm-label>
+                                        <wm-container class="col-md-3" name="container1">
+                                            <wm-checkbox caption="Toggle" type="toggle" name="toggleLeadingIcon" datavalue="true" checkedvalue="true" uncheckedvalue="false"></wm-checkbox>
+                                        </wm-container>
+                                    </wm-composite>
+                                    <wm-composite name="compositeLeadingIconClass" captionposition="floating" show="bind:Widgets.toggleLeadingIcon.datavalue">
+                                        <wm-label class="col-md-3 control-label" notag="true" name="label2" caption="Leading Icon Class"></wm-label>
+                                        <wm-container class="col-md-9" name="container2">
+                                            <wm-text name="textLeadingIconClass"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow7">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn14"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow8">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn15"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow9">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn16"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn9"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

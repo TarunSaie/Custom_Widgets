@@ -1,0 +1,11 @@
+<wm-custom-widget-container>
+    <wm-container name="container1">
+        <wm-composite name="composite1" required="false">
+            <wm-label class=" control-label" notag="true" name="label1" required="false" caption="bind:pageParams.label_text"></wm-label>
+            <wm-container name="2">
+                <wm-radioset height="auto" name="radioset" disabled="bind:pageParams.showDisable" readonly="false" on-change="radiosetChange($event, widget, newVal, oldVal)" on-click="radiosetClick($event, widget)" dataset="Yes,No" datafield="All Fields" on-mouseenter="radiosetMouseenter($event, widget)"
+                    on-mouseleave="radiosetMouseleave($event, widget)" required="bind:pageParams.required" usekeys="false"></wm-radioset>
+            </wm-container>
+        </wm-composite>
+    </wm-container>
+    <wm-custom-widget-container>

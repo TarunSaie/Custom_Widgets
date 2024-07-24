@@ -1,0 +1,98 @@
+.app-composite-widget .form-field-wrapper .form-control.with-leading-icon {
+    padding-left: calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md));
+}
+
+.app-composite-widget .form-field-wrapper .form-control.with-trailing-icon {
+    padding-right: calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md));
+}
+
+.app-composite-widget .form-field-wrapper .form-control.filled {
+    --wm-input-bg: var(--wm-color-surface-container-highest);
+    border-width: 0 0 1px 0;
+    border-radius: var(--wm-input-radius) var(--wm-input-radius) 0 0;
+    padding-top: 14px;
+}
+
+.app-composite-widget .form-field-wrapper .form-control.filled.ng-touched.ng-invalid {
+    border: 1px solid var(--wm-color-error);
+    border-width: 0 0 1px 0;
+}
+
+.app-composite-widget .form-field-wrapper .form-control.filled.ng-touched.ng-invalid:focus {
+    border: 1px solid var(--wm-color-error);
+    border-width: 0 0 1px 0;
+    box-shadow: inset 0 -1px 0 0 var(--wm-color-error);
+}
+
+.app-composite-widget .form-field-wrapper .form-control.filled:focus {
+    border: 1px solid var(--wm-color-primary);
+    border-width: 0 0 1px 0;
+    box-shadow: inset 0 -1px 0 0 var(--wm-color-primary);
+}
+
+.app-composite-widget .form-field-wrapper .btn {
+    padding: 0;
+    background: none;
+    border: none;
+    min-height: auto;
+}
+
+.app-composite-widget .form-field-wrapper .btn .app-icon {
+    font-size: var(--wm-icon-size-md);
+}
+
+.app-composite-widget .form-field-wrapper .btn-leading-icon,
+.app-composite-widget .form-field-wrapper .btn-trailing-icon {
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - calc(var(--wm-icon-size-md)/2));
+    left: calc(var(--wm-input-padding) * 0.75);
+}
+
+.app-composite-widget .form-field-wrapper .btn-trailing-icon {
+    left: auto;
+    right: calc(var(--wm-input-padding) * 0.75);
+}
+
+.app-composite-widget .helper-wrapper {
+    margin-top: 4px;
+    padding: 0 var(--wm-input-padding);
+}
+
+.app-composite-widget .helper-wrapper .helper-text {
+    font-size: var(--wm-caption-size);
+    font-weight: var(--wm-caption-weight);
+    color: var(--wm-caption-color);
+    margin: 0;
+    padding: 0;
+}
+
+.app-composite-widget .helper-wrapper .helper-text.required:after {
+    display: none;
+}
+
+.app-composite-widget.caption-floating .control-label.with-leading-icon {
+    max-width: calc(100% - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)) - var(--wm-input-padding));
+}
+
+.app-composite-widget.caption-floating .control-label.with-leading-icon.with-trailing-icon {
+    max-width: calc(100% - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)) - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)));
+}
+
+.app-composite-widget.caption-floating .control-label.with-trailing-icon {
+    max-width: calc(100% - var(--wm-input-padding) - calc(calc(var(--wm-input-padding)*1.5) + var(--wm-icon-size-md)));
+}
+
+.app-composite-widget.caption-floating.float-active .control-label.filled {
+    left: var(--wm-input-padding);
+    top: calc(var(--wm-input-padding)/2);
+    padding: 0;
+}
+
+.app-composite-widget.caption-floating.float-active .control-label.filled:before {
+    background: none;
+}
+
+.app-composite-widget.caption-floating.float-active .control-label.filled.with-leading-icon {
+    left: calc(calc(var(--wm-input-padding)* 1.5) + var(--wm-icon-size-md));
+}
